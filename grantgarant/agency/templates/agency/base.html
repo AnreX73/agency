@@ -1,0 +1,26 @@
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'agency/images/favicon.ico' type="image/x-icon" %}"/>
+<!--    <link rel="stylesheet" href="{% static 'agency/css/swiper-bundle.css' %}"/>-->
+    <link type="text/css" rel="stylesheet" href="{% static 'agency/css/styles.css' %}"/>
+</head>
+<body>
+
+<div class="all_content_wrapper">
+
+{% block content %}
+
+{% endblock content %}
+</div>
+<!--<script type="text/javascript" src='{% static  "agency/js/swiper-bundle.js" %}'></script>-->
+<script type="text/javascript" src='{% static  "agency/js/main.js" %}'></script>
+
+</body>
+</html>
