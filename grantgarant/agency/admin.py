@@ -27,7 +27,7 @@ from agency.models import *
 #     prepopulated_fields = {'slug': ('title',)}
 #     save_on_top = True
 
-#
+# @admin.register(RoomAmount)
 # class RoomAmountAdmin(admin.ModelAdmin):
 #     list_display = ('id', 'title')
 #     list_display_links = ('id', 'title')
@@ -64,19 +64,25 @@ from agency.models import *
 
 @admin.register(InCityObject)
 class InCityObjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'rooms', 'city_region', 'price', 'is_published')
+    list_display = ('id', 'title', 'rooms', 'gethtmlPhoto', 'city_region', 'price', 'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'rooms', 'city_region',)
     list_editable = ('is_published',)
     list_filter = ('is_published', 'time_create')
     save_on_top = True
 
+    def gethtmlPhoto(self, picture):
+        if picture.image:
+            return mark_safe(f"<img src='{picture.image.url}' width=50>")
+
+    gethtmlPhoto.short_description = 'миниатюра'
+
 
 @admin.register(OutCityObject)
 class OutCityObjectAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'object_type', 'object_adress', 'land_square', 'price', 'is_published')
     list_display_links = ('id', 'title')
-    search_fields = ('title', 'land_square', )
+    search_fields = ('title', 'land_square',)
     list_editable = ('is_published',)
     list_filter = ('is_published', 'time_create')
     save_on_top = True

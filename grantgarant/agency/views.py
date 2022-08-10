@@ -5,7 +5,10 @@ from agency.models import *
 
 def index(request):
     context = {
-        'title': 'СМАРТ ФОТО',
+        'title': 'Грант Гарант',
+        'cityObjects': InCityObject.objects.all(),
+        'outcityObjects': OutCityObject.objects.all(),
+        
 
     }
     return render(request, 'agency/index.html', context=context)

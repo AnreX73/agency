@@ -113,6 +113,7 @@ class ObjectConstruction(models.Model):
 class InCityObject(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     price = models.CharField(max_length=255, verbose_name='Цена')
+    image = models.ImageField(upload_to="images", blank=True, verbose_name='Изображение')
     is_for_sale = models.BooleanField(default=True, verbose_name='Продажа')
     is_for_rent = models.BooleanField(default=False, verbose_name='Аренда')
     is_hot = models.BooleanField(default=False, verbose_name='горячий вариант', help_text='если хотите видеть на '
