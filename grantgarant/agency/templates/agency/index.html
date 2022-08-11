@@ -2,7 +2,11 @@
 
 
 {% block content %}
-
+{% for i in cityObjects%}
+    <div class="object">
+        {{i.title}}
+    </div>
+{% endfor %}
 {% endblock content %}
 
 
