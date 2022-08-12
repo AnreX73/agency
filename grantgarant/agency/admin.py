@@ -62,6 +62,14 @@ from agency.models import *
 #     search_fields = ('title',)
 #     save_on_top = True
 
+# @admin.register(Balcony)
+# class BalconyAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
+
+
 @admin.register(InCityObject)
 class InCityObjectAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'rooms', 'gethtmlPhoto', 'city_region', 'price', 'is_published')
@@ -80,12 +88,19 @@ class InCityObjectAdmin(admin.ModelAdmin):
 
 @admin.register(OutCityObject)
 class OutCityObjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'object_type', 'object_adress', 'land_square', 'price', 'is_published')
+    list_display = (
+        'id', 'title', 'object_type', 'gethtmlPhoto', 'object_adress', 'land_square', 'price', 'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'land_square',)
     list_editable = ('is_published',)
     list_filter = ('is_published', 'time_create')
     save_on_top = True
+
+    def gethtmlPhoto(self, picture):
+        if picture.image:
+            return mark_safe(f"<img src='{picture.image.url}' width=50>")
+
+    gethtmlPhoto.short_description = 'миниатюра'
 
 
 # @admin.register(OutCityObjectType)
@@ -207,6 +222,28 @@ class OutCityObjectAdmin(admin.ModelAdmin):
 #     list_display_links = ('id', 'title')
 #     search_fields = ('title',)
 #     save_on_top = True
+
+
+@admin.register(Graphics)
+class GraphicsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'gethtmlPhoto', 'description')
+    list_display_links = ('id', 'description')
+    search_fields = ('description',)
+    save_on_top = True
+
+    def gethtmlPhoto(self, picture):
+        if picture.image:
+            return mark_safe(f"<img src='{picture.image.url}' width=50>")
+
+    gethtmlPhoto.short_description = 'миниатюра'
+
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title')
+    list_display_links = ('id', 'title')
+    search_fields = ('title',)
+    save_on_top = True
 
 
 # admin.site.register(InCityObjectType, InCityObjectTypeAdmin)

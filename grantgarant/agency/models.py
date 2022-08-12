@@ -70,6 +70,19 @@ class BathroomType(models.Model):
         ordering = ['id']
 
 
+# Балкон
+class Balcony(models.Model):
+    title = models.CharField(max_length=100,  verbose_name='Балкон')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Балкон'
+        verbose_name_plural = 'Балкон'
+        ordering = ['id']
+
+
 # тип лифта
 class ElevatorType(models.Model):
     title = models.CharField(max_length=100, verbose_name='Тип лифта')
@@ -113,7 +126,7 @@ class ObjectConstruction(models.Model):
 class InCityObject(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     price = models.CharField(max_length=255, verbose_name='Цена')
-    image = models.ImageField(upload_to="images", blank=True, verbose_name='Изображение')
+    image = models.ImageField(upload_to="images", blank=True, verbose_name='Основное изображение')
     is_for_sale = models.BooleanField(default=True, verbose_name='Продажа')
     is_for_rent = models.BooleanField(default=False, verbose_name='Аренда')
     is_hot = models.BooleanField(default=False, verbose_name='горячий вариант', help_text='если хотите видеть на '
@@ -128,6 +141,7 @@ class InCityObject(models.Model):
     live_square = models.CharField(max_length=255, blank=True, verbose_name='жилая площадь')
     kitchen = models.CharField(max_length=255, blank=True, verbose_name='площадь кухни')
     rooms_layout = models.CharField(max_length=255, blank=True, verbose_name='планировка')
+    balcony = models.ForeignKey(Balcony, default=2, on_delete=models.PROTECT, verbose_name='балкон')
     floor = models.CharField(max_length=25, blank=True, verbose_name='Этаж')
     bathroom = models.ForeignKey(BathroomType, on_delete=models.PROTECT, verbose_name='санузел')
     elevator = models.ForeignKey(ElevatorType, on_delete=models.PROTECT, verbose_name='лифт')
@@ -348,6 +362,7 @@ class ForestNearly(models.Model):
 class OutCityObject(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     price = models.CharField(max_length=255, verbose_name='Цена')
+    image = models.ImageField(upload_to="images", blank=True, verbose_name='Основное изображение')
     is_for_sale = models.BooleanField(default=True, verbose_name='Продажа')
     is_for_rent = models.BooleanField(default=False, verbose_name='Аренда')
     is_hot = models.BooleanField(default=False, verbose_name='горячий вариант')
@@ -386,4 +401,33 @@ class OutCityObject(models.Model):
     class Meta:
         verbose_name = 'Загородный объект'
         verbose_name_plural = 'Загородный объект'
+        ordering = ['id']
+
+
+# Графические объекты на сайте
+class Graphics(models.Model):
+    image = models.ImageField(upload_to="images", blank=True, verbose_name='изображение')
+    description = models.CharField(max_length=55, verbose_name='описание изображения')
+    note = models.CharField(max_length=55, verbose_name='примечание')
+
+    def __str__(self):
+        return self.description
+
+    class Meta:
+        verbose_name = 'графический объект'
+        verbose_name_plural = 'Графика'
+        ordering = ['id']
+
+
+# Статьи
+class Post(models.Model):
+    title = models.CharField(max_length=55, verbose_name='Заголовок статьи')
+    content = RichTextField(blank=True, verbose_name='текст статьи')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Статью'
+        verbose_name_plural = 'Статьи'
         ordering = ['id']
