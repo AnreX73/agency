@@ -77,6 +77,7 @@ class InCityObjectAdmin(admin.ModelAdmin):
     search_fields = ('title', 'rooms', 'city_region',)
     list_editable = ('is_published',)
     list_filter = ('is_published', 'time_create')
+    prepopulated_fields = {'slug': ('title',)}
     save_on_top = True
 
     def gethtmlPhoto(self, picture):
@@ -93,6 +94,7 @@ class OutCityObjectAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     search_fields = ('title', 'land_square',)
     list_editable = ('is_published',)
+    prepopulated_fields = {'slug': ('title',)}
     list_filter = ('is_published', 'time_create')
     save_on_top = True
 
@@ -226,9 +228,9 @@ class OutCityObjectAdmin(admin.ModelAdmin):
 
 @admin.register(Graphics)
 class GraphicsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'gethtmlPhoto', 'description')
+    list_display = ('id', 'gethtmlPhoto', 'description', 'note')
     list_display_links = ('id', 'description')
-    search_fields = ('description',)
+    search_fields = ('description','note')
     save_on_top = True
 
     def gethtmlPhoto(self, picture):

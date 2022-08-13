@@ -1,8 +1,10 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 
-
 # Тип объекта городской недвижимости
+from django.urls import reverse
+
+
 class InCityObjectType(models.Model):
     title = models.CharField(max_length=100, verbose_name='Тип объекта')
     slug = models.SlugField(unique=True, max_length=100, db_index=True, verbose_name='URL')
@@ -72,7 +74,7 @@ class BathroomType(models.Model):
 
 # Балкон
 class Balcony(models.Model):
-    title = models.CharField(max_length=100,  verbose_name='Балкон')
+    title = models.CharField(max_length=100, verbose_name='Балкон')
 
     def __str__(self):
         return self.title
@@ -125,6 +127,7 @@ class ObjectConstruction(models.Model):
 # объект городской недвижимости
 class InCityObject(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
+    slug = models.SlugField(unique=True, max_length=150, db_index=True, verbose_name='URL')
     price = models.CharField(max_length=255, verbose_name='Цена')
     image = models.ImageField(upload_to="images", blank=True, verbose_name='Основное изображение')
     is_for_sale = models.BooleanField(default=True, verbose_name='Продажа')
@@ -155,6 +158,9 @@ class InCityObject(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('apartment', kwargs={'apartment_slug': self.slug})
 
     class Meta:
         verbose_name = 'объект'
@@ -361,6 +367,7 @@ class ForestNearly(models.Model):
 # объект загородной недвижимости
 class OutCityObject(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
+    slug = models.SlugField(unique=True, max_length=150, db_index=True, verbose_name='URL')
     price = models.CharField(max_length=255, verbose_name='Цена')
     image = models.ImageField(upload_to="images", blank=True, verbose_name='Основное изображение')
     is_for_sale = models.BooleanField(default=True, verbose_name='Продажа')
@@ -398,6 +405,9 @@ class OutCityObject(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('show_object', kwargs={'object_slug': self.slug})
+
     class Meta:
         verbose_name = 'Загородный объект'
         verbose_name_plural = 'Загородный объект'
@@ -408,7 +418,7 @@ class OutCityObject(models.Model):
 class Graphics(models.Model):
     image = models.ImageField(upload_to="images", blank=True, verbose_name='изображение')
     description = models.CharField(max_length=55, verbose_name='описание изображения')
-    note = models.CharField(max_length=55, verbose_name='примечание')
+    note = models.CharField(max_length=55, blank=True, verbose_name='примечание')
 
     def __str__(self):
         return self.description
