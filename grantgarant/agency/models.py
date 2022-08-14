@@ -160,7 +160,7 @@ class InCityObject(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('apartment', kwargs={'apartment_slug': self.slug})
+        return reverse('show_apartment', kwargs={'apartment_slug': self.slug})
 
     class Meta:
         verbose_name = 'объект'
