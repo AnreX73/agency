@@ -2,13 +2,37 @@
 
 {% block content %}
 
-<div class="apartment-page-container"></div>
+<div class="apartment-page-container">
 
 <h2 class="apartment-page-info">{{apartment.title}}</h2>
 <div class="img-price-container">
 <div class="apartment-page-info price-box">{{apartment.price}}<span class="price"> &#8399;</span></div>
-<div class="apartment-image-container"><img src="{{apartment.image.url}}" alt="{{apartment.title}}">
+<div class="apartment-image-container">
+  <!-- Slider main container -->
+<div class="swiper object-gallery">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {% for gal in gallery%}
+  <div class="swiper-slide"><img class="gallery-image" src="{{gal.gallery_image.url}}" alt="{{gal.note}}"></div>
+  {% endfor%}
+
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev left-arrow"></div>
+  <div class="swiper-button-next right-arrow"></div>
+
+  <!-- If we need scrollbar -->
+  
 </div>
+</div>
+
+
+
+
 </div>
 <div class="apartment-table-wrapper">
 <table width="300" cellspacing="3" cellpadding="0">
@@ -84,6 +108,7 @@
 </div>
 <div class="apartment-description">
     {{apartment.content|safe}}
+</div>
 </div>
 </div>
 {% endblock content %}

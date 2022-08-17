@@ -105,6 +105,20 @@ class OutCityObjectAdmin(admin.ModelAdmin):
     gethtmlPhoto.short_description = 'миниатюра'
 
 
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ('galleryLink', 'gethtmlPhoto', 'note',)
+    list_display_links = ('galleryLink', 'note')
+    search_fields = ('galleryLink',)
+    save_on_top = True
+
+    def gethtmlPhoto(self, picture):
+        if picture.gallery_image:
+            return mark_safe(f"<img src='{picture.gallery_image.url}' width=50>")
+
+    gethtmlPhoto.short_description = 'миниатюра'
+
+
 # @admin.register(OutCityObjectType)
 # class OutCityObjectTypeAdmin(admin.ModelAdmin):
 #     list_display = ('id', 'title')
@@ -230,7 +244,7 @@ class OutCityObjectAdmin(admin.ModelAdmin):
 class GraphicsAdmin(admin.ModelAdmin):
     list_display = ('id', 'gethtmlPhoto', 'description', 'note')
     list_display_links = ('id', 'description')
-    search_fields = ('description','note')
+    search_fields = ('description', 'note')
     save_on_top = True
 
     def gethtmlPhoto(self, picture):

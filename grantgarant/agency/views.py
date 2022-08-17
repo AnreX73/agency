@@ -24,8 +24,10 @@ def apartments(request):
 
 def show_apartment(request, apartment_slug):
     apartment = get_object_or_404(InCityObject, slug=apartment_slug)
+    apartment_id = apartment.id
     context = {
         'apartment': apartment,
-        
+        'gallery': Gallery.objects.filter(galleryLink_id=apartment_id)
+
     }
     return render(request, 'agency/apartment.html', context=context)

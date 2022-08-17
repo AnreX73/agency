@@ -122,6 +122,10 @@ td{
     height: 100vw;
     padding: 30px;
 }
+.object-gallery{
+ width: 600px;
+  height: 300px;
+}
 /*список квартир*/
 .logo-title{
   display: flex;
@@ -192,12 +196,19 @@ font-size: 1.1rem;
 
 
 /*страница объекта */
+.apartment-page-container{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .apartment-image-container{
   max-width: 600px;
   padding: 15px;
 }
 .apartment-image-container img{
  width: 100%;
+ height:100%;
 }
 .apartment-table-wrapper{
   max-width: 600px;
@@ -209,6 +220,7 @@ font-size: 1.1rem;
   max-width: 600px;
   text-align: justify;
   font-size: 1.2rem;
+  line-height:1.2;
 }
 .price-box{
   background:#f0094a;
@@ -216,9 +228,25 @@ font-size: 1.1rem;
   padding:10px;
   position:absolute;
   border-radius:4px; 
-  top: 10px; 
+  top: 10px;
+  z-index:2;
 }
 
+.object-gallery .swiper-button-prev::after,.object-gallery .swiper-button-next::after{
+  font-size: 30px ;
+  color:#f0094a;
+}
+
+.object-gallery .swiper-pagination-bullet{
+  background-color:white;
+  width: 20px ;
+  height: 20px ;
+}
+.gallery-image{
+  max-width: 100%;
+  height: 100%;
+  object-fit:contain;
+}
 /*кнопка hot*/
 .custom-btn {
   width: 90px;

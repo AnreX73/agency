@@ -441,3 +441,18 @@ class Post(models.Model):
         verbose_name = 'Статью'
         verbose_name_plural = 'Статьи'
         ordering = ['id']
+
+
+class Gallery(models.Model):
+    galleryLink = models.ForeignKey(InCityObject, on_delete=models.PROTECT, verbose_name='Ссылка на объект')
+    gallery_image = models.ImageField(upload_to="images", blank=True, verbose_name='Фото')
+    note = models.CharField(blank=True, max_length=100, verbose_name='примечание')
+    is_published = models.BooleanField(default=True, verbose_name='Публикация')
+
+    def __str__(self):
+        return self.note
+
+    class Meta:
+        verbose_name = 'фото объекта'
+        verbose_name_plural = 'фото объекта'
+        ordering = ['galleryLink']
