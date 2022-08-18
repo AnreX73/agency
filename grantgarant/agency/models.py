@@ -414,18 +414,19 @@ class OutCityObject(models.Model):
         ordering = ['id']
 
 
-# Графические объекты на сайте
+# Графические объекты и прочее на сайте
 class Graphics(models.Model):
     image = models.ImageField(upload_to="images", blank=True, verbose_name='изображение')
     description = models.CharField(max_length=55, verbose_name='описание изображения')
-    note = models.CharField(max_length=55, blank=True, verbose_name='примечание')
+    note = models.TextField(blank=True, verbose_name='примечание')
+    is_published = models.BooleanField(default=True, verbose_name='Публикация')
 
     def __str__(self):
         return self.description
 
     class Meta:
         verbose_name = 'графический объект'
-        verbose_name_plural = 'Графика'
+        verbose_name_plural = 'Графика и т.п.'
         ordering = ['id']
 
 
@@ -443,6 +444,7 @@ class Post(models.Model):
         ordering = ['id']
 
 
+# Галереи фото квартир
 class Gallery(models.Model):
     galleryLink = models.ForeignKey(InCityObject, on_delete=models.PROTECT, verbose_name='Ссылка на объект')
     gallery_image = models.ImageField(upload_to="images", blank=True, verbose_name='Фото')
@@ -456,3 +458,20 @@ class Gallery(models.Model):
         verbose_name = 'фото объекта'
         verbose_name_plural = 'фото объекта'
         ordering = ['galleryLink']
+
+
+# Контактная информация
+class Contacts(models.Model):
+    title = models.CharField(max_length=55, verbose_name='название')
+    image = models.ImageField(upload_to="images", blank=True, verbose_name='Изображение')
+    description = models.CharField(max_length=255, blank=True, verbose_name='описание если есть')
+    extra_description = models.TextField(blank=True, verbose_name='описание дополнительное')
+    is_published = models.BooleanField(default=True, verbose_name='Публикация')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'контактную информацию'
+        verbose_name_plural = 'Контакты'
+        ordering = ['id']
