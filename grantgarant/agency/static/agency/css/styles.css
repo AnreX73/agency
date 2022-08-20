@@ -98,7 +98,6 @@ h6 {
 body {
 font-family: 'Oswald', sans-serif;
 height:100%;
-
 }
 h2{
   font-size: 1.5rem;
@@ -125,6 +124,8 @@ td{
     background:rgb(0, 128, 128, 0.03);
     height: 100%;
     padding: 30px;
+    display: flex;
+    flex-direction: column;
     
 }
 .help-div{
@@ -139,7 +140,7 @@ header{
   width: var(--content-size);
   text-align: center;
   left: 50%;
-  height: var(--header-height);
+  font-size: 1.3rem;
   transform: translate(-50%);
   background:#fff;
   position: fixed;
@@ -155,9 +156,28 @@ header .logo-box {
  
 }
 .logo-box img{
-max-height: 60px;
-object-fit: contain;
+  max-height: 60px;
+  object-fit: contain;
+  }
+header .phone-box{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
 }
+header .phone-box :nth-child(1){
+  justify-self: flex-end;
+}
+header .phones-wrapper{
+  justify-self: flex-start;
+  
+}
+header .header-phone{
+  padding: 3px;
+}
+
+
 /*список квартир*/
 .logo-title{
   display: flex;

@@ -9,8 +9,10 @@ register = template.Library()
 def show_header():
     contacts = Contacts.objects.all()
     logo = Graphics.objects.get(note='logo')
+    phone_icon = Graphics.objects.get(description='иконка телефона')
     contact_link = 'контакты'
     return {"contacts": contacts,
             "logo": logo,
-            "contact_link ": contact_link,
+            "contact_link":contact_link,
+            'phone_icon': phone_icon,
             }

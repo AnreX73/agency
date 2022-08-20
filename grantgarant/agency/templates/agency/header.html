@@ -1,7 +1,20 @@
 
 <header>
-<div class="header-items logo-box">  <img class="main-menu-image" src="{{logo.image.url}}" alt="{{logo.description}}" /></div>
-<div class="header-items phone-box">телефоны</div>
-<div class="header-items contact-link-box">ссылка на контакты</div>
+
+<a href='{% url "home" %}'><div class="header-items logo-box">  <img  src="{{logo.image.url}}" alt="{{logo.description}}" /></div> </a>
+<div class="header-items phone-box">
+     <img  src="{{phone_icon.image.url}}" alt="{{phone_icon.title}}" />
+     <div class="phones-wrapper">
+        {% for cont in contacts %}
+        {% if cont.extra_description == 'тел.' %}
+        <div class="header-phone">
+        {{cont.description}}
+        </div>
+        {% endif %}
+        {% endfor %}
+     </div>
+
+</div>
+<a href=""><div class="header-items contact-link-box">{{contact_link}}</div></a>
 </header>
 
