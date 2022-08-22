@@ -3,7 +3,7 @@
 {% block content %}
 <div class="logo-title">
     <img src="{{grath.image.url}}" alt="{{ap.title}}">
-    <span class="apartment-logo-title"><h2>{{grath.note}}</h2></span>
+    <span class="apartment-logo-title"><h2>{{grath.note|safe}}</h2></span>
 </div>
 <div class="apartments-container">
    

@@ -3,13 +3,13 @@ from django.utils.safestring import mark_safe
 
 from agency.models import *
 
-
-# class InCityObjectTypeAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'title')
-#     list_display_links = ('id', 'title')
-#     search_fields = ('title',)
-#     prepopulated_fields = {'slug': ('title',)}
-#     save_on_top = True
+@admin.register(InCityObjectType)
+class InCityObjectTypeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title')
+    list_display_links = ('id', 'title')
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
+    save_on_top = True
 #
 #
 # class InCityRegionAdmin(admin.ModelAdmin):
@@ -119,13 +119,13 @@ class GalleryAdmin(admin.ModelAdmin):
     gethtmlPhoto.short_description = 'миниатюра'
 
 
-# @admin.register(OutCityObjectType)
-# class OutCityObjectTypeAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'title')
-#     list_display_links = ('id', 'title')
-#     search_fields = ('title',)
-#     prepopulated_fields = {'slug': ('title',)}
-#     save_on_top = True
+@admin.register(OutCityObjectType)
+class OutCityObjectTypeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title')
+    list_display_links = ('id', 'title')
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
+    save_on_top = True
 #
 #
 # @admin.register(TypeOfOwnership)
@@ -278,7 +278,7 @@ class ContactsAdmin(admin.ModelAdmin):
     gethtmlPhoto.short_description = 'миниатюра'
 
 
-# admin.site.register(InCityObjectType, InCityObjectTypeAdmin)
+
 # admin.site.register(InCityRegion, InCityRegionAdmin)
 # admin.site.register(MetroStation, MetroStationAdmin)
 # admin.site.register(RoomAmount, RoomAmountAdmin)

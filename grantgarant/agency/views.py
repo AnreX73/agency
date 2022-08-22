@@ -5,10 +5,14 @@ from agency.models import *
 
 
 def index(request):
+    
     context = {
-        'title': 'Грант Гарант',
-
-
+        'title': 'Агенство Грант Гарант',
+        'main_page_img': Graphics.objects.get(description='изображение на главную'),
+        'main_page_slogan': Graphics.objects.get(description='Слоган'),
+        'main_page_hot_button': Graphics.objects.get(description='горячая кнопка на главной'),
+        'in_city_object_type': InCityObjectType.objects.all(),
+        'out_city_object_type': OutCityObjectType.objects.all(),
     }
     return render(request, 'agency/index.html', context=context)
 
@@ -16,7 +20,7 @@ def index(request):
 def apartments(request):
     context = {
         'apartments': InCityObject.objects.all(),
-        'grath': Graphics.objects.get(note='квартиры и комнаты')
+        'grath': Graphics.objects.get(description='иконка квартир')
     }
     return render(request, 'agency/apartments.html', context=context)
 

@@ -8,6 +8,7 @@ from django.urls import reverse
 class InCityObjectType(models.Model):
     title = models.CharField(max_length=100, verbose_name='Тип объекта')
     slug = models.SlugField(unique=True, max_length=100, db_index=True, verbose_name='URL')
+    in_main_page = models.BooleanField(default=True, verbose_name='в меню на главной странице')
 
     def __str__(self):
         return self.title
@@ -172,6 +173,7 @@ class InCityObject(models.Model):
 class OutCityObjectType(models.Model):
     title = models.CharField(max_length=100, verbose_name='Тип загородного объекта')
     slug = models.SlugField(unique=True, max_length=100, db_index=True, verbose_name='URL')
+    in_main_page = models.BooleanField(default=True, verbose_name='в меню на главной странице')
 
     def __str__(self):
         return self.title
@@ -418,7 +420,7 @@ class OutCityObject(models.Model):
 class Graphics(models.Model):
     image = models.ImageField(upload_to="images", blank=True, verbose_name='изображение')
     description = models.CharField(max_length=55, verbose_name='описание изображения')
-    note = models.TextField(blank=True, verbose_name='примечание')
+    note = RichTextField(blank=True, verbose_name='примечание')
     is_published = models.BooleanField(default=True, verbose_name='Публикация')
 
     def __str__(self):

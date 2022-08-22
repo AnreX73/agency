@@ -3,10 +3,27 @@
 
 {% block content %}
 
- <div class="main-image-wrapper">
-
+<div class="main-page-all-wrapper">
+    <div class="main-page-nav">
+        {% for incity in in_city_object_type %}
+        {% if  incity.in_main_page %}
+        <a href=""><div class="nav-item">{{incity.title }}</div></a>
+        {% endif %}
+        {% endfor %}
+        {% for incity in out_city_object_type %}
+        {% if incity.in_main_page %}
+        <a href=""><div class="nav-item">{{incity.title}}</div></a>
+        {% endif %}
+        {% endfor %}
+     </div> 
+    <div class="main-page-slogan">{{main_page_slogan.note|safe}}</div>
+    <div class="main-page-img-wrapper">
+        <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">
+        <button class="custom-btn btn-5"><span>{{main_page_hot_button.note|safe}}</span></button>
+    </div>
+   
 </div>
-<button class="custom-btn btn-5"><span>Специальное предложение</span></button>
+
 
 
 {% endblock content %}

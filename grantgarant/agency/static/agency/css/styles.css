@@ -92,8 +92,11 @@ h6 {
 /*конец обнуление*/
 :root{
   --content-size:1280px;
-  --wild-text:#f0094a;
+  --wild-text: 	#D50000;
   --header-height:75px;
+  --shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
 }
 body {
 font-family: 'Oswald', sans-serif;
@@ -108,11 +111,11 @@ td, th{
 }
 th{
   text-align: left;
-  background: #e9dfe1;
+  background: rgb(0, 128, 128,0.2);
 }
 td{
   text-align: left;
-  background: #e7e6e6;
+  background: rgb(0, 128, 128,0.1);
 }
 .price {
   font-family: 'PT Sans', serif;
@@ -176,7 +179,122 @@ header .phones-wrapper{
 header .header-phone{
   padding: 3px;
 }
+.main-page-all-wrapper{
+  position: relative;
+  width:100%;
+  height: 100%;
+}
 
+.main-page-nav{
+  position: absolute;
+  left:10%;
+  top: 30%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  font-size:1.5rem;
+}
+.main-page-nav .nav-item{
+  border-left: 1px solid rgb(0, 128, 128);
+  padding:8px;
+  border-radius: 4px;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+}
+.main-page-nav .nav-item:hover{
+  background: teal;
+  color: #fff;
+  transition:300ms ease all;
+}
+
+.main-page-slogan{
+  font-size:60px;
+  color: teal;
+  font-weight: bold;
+}
+.main-page-img-wrapper{
+  position: absolute;
+  width:600px;
+  height:600px;
+  right:10px;
+  top:150px;
+  border-radius:50%; 
+}
+.main-page-img-wrapper img{
+  border: 1px solid black;
+  border-radius:50%;
+  object-fit:cover;
+  width:100%;
+  height: 100%;
+  
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+}
+
+/*кнопка hot*/
+.custom-btn {
+  width: 90px;
+  height:90px;
+  color: #fff;
+  border-radius: 5px;
+  padding:  25px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+  border-radius:50%;
+}
+
+.btn-5 {
+  position: absolute;
+  right: 85%;
+  bottom:10%;
+  width: 125px;
+  height:125px;
+  padding: 0;
+  border: none;
+background: var(--wild-text);
+}
+.btn-5:hover {
+  color: var(--wild-text);
+  background:white;
+   box-shadow:none;
+}
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: var(--wild-text);
+  box-shadow:
+   -1px -1px 5px 0px #fff,
+   7px 7px 20px 0px #0003,
+   4px 4px 5px 0px #0002;
+  transition:400ms ease all;
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
 
 /*список квартир*/
 .logo-title{
@@ -194,6 +312,7 @@ align-content: center;
 .apartment-container{
   border-radius:4px;
   border:1px solid rgb(0, 0, 0, 0.2);
+  box-shadow:var(--shadow);
   padding:15px;
   
  
@@ -243,6 +362,9 @@ justify-items: center;
 padding: 10px;
 gap: 5px;
 font-size: 1.1rem;
+background:  rgb(0, 128, 128,0.1);
+border-radius: 4px;
+
 }
 /*конец список квартир*/
 
@@ -303,62 +425,4 @@ font-size: 1.1rem;
   height: 100%;
   object-fit:contain;
 }
-/*кнопка hot*/
-.custom-btn {
-  width: 90px;
-  height:90px;
-  color: #fff;
-  border-radius: 5px;
-  padding:  25px;
 
-  font-weight: 700;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
-  outline: none;
-  border-radius:50%;
-}
-
-.btn-5 {
-  width: 100px;
-  height:100px;
-  padding: 0;
-  border: none;
-background: var(--wild-text);
-}
-.btn-5:hover {
-  color: var(--wild-text);
-  background: transparent;
-   box-shadow:none;
-}
-.btn-5:before,
-.btn-5:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: var(--wild-text);
-  box-shadow:
-   -1px -1px 5px 0px #fff,
-   7px 7px 20px 0px #0003,
-   4px 4px 5px 0px #0002;
-  transition:400ms ease all;
-}
-.btn-5:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-.btn-5:hover:before,
-.btn-5:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
