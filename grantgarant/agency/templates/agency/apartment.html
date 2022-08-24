@@ -1,7 +1,7 @@
 {% extends 'agency/base.html' %}
-
+{% load agency_tags %}
 {% block content %}
-
+<div class="apartment-all-page-container">
 <div class="apartment-page-container">
 
 <h2 class="apartment-page-info">{{apartment.title}}</h2>
@@ -29,9 +29,6 @@
   
 </div>
 </div>
-
-
-
 
 </div>
 <div class="apartment-table-wrapper">
@@ -110,5 +107,9 @@
     {{apartment.content|safe}}
 </div>
 </div>
+<div class="list-page-nav">
+  {% show_nav %}
+  </div>
 </div>
+
 {% endblock content %}

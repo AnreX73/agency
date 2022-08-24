@@ -1,20 +1,11 @@
 {% extends 'agency/base.html' %}
-
+{% load agency_tags %}
 
 {% block content %}
 
 <div class="main-page-all-wrapper">
     <div class="main-page-nav">
-        {% for incity in in_city_object_type %}
-        {% if  incity.in_main_page %}
-        <a href=""><div class="nav-item">{{incity.title }}</div></a>
-        {% endif %}
-        {% endfor %}
-        {% for incity in out_city_object_type %}
-        {% if incity.in_main_page %}
-        <a href=""><div class="nav-item">{{incity.title}}</div></a>
-        {% endif %}
-        {% endfor %}
+     {% show_nav %}
      </div> 
     <div class="main-page-slogan">{{main_page_slogan.note|safe}}</div>
     <div class="main-page-img-wrapper">

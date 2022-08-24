@@ -1,0 +1,10 @@
+{% for incity in in_city_object_type %}
+    {% if  incity.in_main_page %}
+        <a href=""><div class="nav-item">{{incity.title }}</div></a>
+    {% endif %}
+    {% endfor %}
+    {% for incity in out_city_object_type %}
+        {% if incity.in_main_page %}
+        <a href=""><div class="nav-item">{{incity.title}}</div></a>
+    {% endif %}
+{% endfor %}

@@ -16,9 +16,9 @@ const swiper = new Swiper('.object-gallery', {
   loop: true,
   grabCursor:true,
 
-        mousewheel:{
-          eventTarget:".object-gallery",
-        },
+        // mousewheel:{
+        //   eventTarget:".object-gallery",
+        // },
 
   // Navigation arrows
   navigation: {

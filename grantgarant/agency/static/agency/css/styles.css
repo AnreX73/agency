@@ -90,6 +90,7 @@ h6 {
   font-weight: 400;
 }
 /*конец обнуление*/
+/*переменные css*/
 :root{
   --content-size:1280px;
   --wild-text: 	#D50000;
@@ -101,10 +102,12 @@ h6 {
 body {
 font-family: 'Oswald', sans-serif;
 height:100%;
+
 }
 h2{
   font-size: 1.5rem;
 }
+/*стили таблиц*/
 td, th{
   padding: 5px; 
   border-radius: 4px;
@@ -117,30 +120,30 @@ td{
   text-align: left;
   background: rgb(0, 128, 128,0.1);
 }
+/*знак рубля*/
 .price {
   font-family: 'PT Sans', serif;
   }
-
+/*общая оболочка*/
 .all_content_wrapper{
     margin: 0 auto;
     max-width: var(--content-size);
     background:rgb(0, 128, 128, 0.03);
-    height: 100%;
+    height: 100vw;
     padding: 30px;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
 }
 .help-div{
   height: var(--header-height);
 }
-
+/*шапка*/
 header{
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 15px;
   width: 100%;
-  width: var(--content-size);
+  max-width: var(--content-size);
   text-align: center;
   left: 50%;
   font-size: 1.3rem;
@@ -152,16 +155,19 @@ header{
   align-items: center;
   overflow: hidden;
 }
+/*контейнер логотипа в шапке*/
 header .logo-box {
   max-width: 100%;
   height: auto;
   padding: 5px;
  
 }
+/*логотип в шапке*/
 .logo-box img{
   max-height: 60px;
   object-fit: contain;
   }
+  /*значок телефона в шапке*/
 header .phone-box{
   display: grid;
   grid-template-columns: repeat(2,1fr);
@@ -172,28 +178,31 @@ header .phone-box{
 header .phone-box :nth-child(1){
   justify-self: flex-end;
 }
+/*контейнер для номеров телефона в шапке*/
 header .phones-wrapper{
-  justify-self: flex-start;
-  
+  justify-self: flex-start;  
 }
+/* телефоны в шапке*/
 header .header-phone{
   padding: 3px;
 }
+/*оболочка главной страницы*/
 .main-page-all-wrapper{
   position: relative;
   width:100%;
   height: 100%;
 }
-
+/*оболочка навигации на главной странице*/
 .main-page-nav{
   position: absolute;
   left:10%;
-  top: 30%;
+  top: 15%;
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
   font-size:1.5rem;
 }
+/*элементы навигации главной страницы*/
 .main-page-nav .nav-item{
   border-left: 1px solid rgb(0, 128, 128);
   padding:8px;
@@ -207,12 +216,13 @@ header .header-phone{
   color: #fff;
   transition:300ms ease all;
 }
-
+/*стили для слогана*/
 .main-page-slogan{
   font-size:60px;
   color: teal;
   font-weight: bold;
 }
+/*стили для картинки на главной*/
 .main-page-img-wrapper{
   position: absolute;
   width:600px;
@@ -253,7 +263,6 @@ header .header-phone{
   outline: none;
   border-radius:50%;
 }
-
 .btn-5 {
   position: absolute;
   right: 85%;
@@ -299,15 +308,53 @@ background: var(--wild-text);
 /*список квартир*/
 .logo-title{
   display: flex;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+/*контейнер списка объектов*/
+.all-list-page-wrapper{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  /* justify-items: center; */
+}
+.list-wrapper {
+  margin-bottom: 35px;
+  display: flex;
+  flex-direction: column;
 }
 .apartments-container{
 display: grid;
 grid-template-columns: repeat(3,1fr);
-gap: 10px;
-justify-content: center;
-justify-items: center;
-align-content: center;
-
+column-gap:10px;
+row-gap: 30px;
+justify-items: left;
+align-items: center;
+/* padding: 25px; */
+}
+.list-page-nav{
+  position: fixed;
+  right: 400px;
+  
+}
+ .nav-item{
+  margin-bottom: 5px;
+  border-left: 1px solid rgb(0, 128, 128);
+  padding:10px;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+}
+.nav-item:hover{
+  background: teal;
+  color: #fff;
+  transition:300ms ease all;
+}
+/*контейнер одиночного объекта в списке*/
+.apartment-all-page-container{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
 }
 .apartment-container{
   border-radius:4px;
@@ -315,12 +362,13 @@ align-content: center;
   box-shadow:var(--shadow);
   padding:15px;
   
- 
 }
-
+.apartment-container:hover{
+  background-color:rgb(0, 128, 128,0.1); 
+}
+/*главное фото объкта и цена в списке объектов*/
 .img-price-container{
 position:relative;
-
 }
 .apartment-title{
 padding-bottom:10px;
@@ -355,6 +403,7 @@ border-radius:4px;
   text-align: center;
   
 }
+/*краткая инфа об объекте*/
 .apartment-info-wrapper{
 display: grid;
 grid-template-columns: 1fr;
@@ -366,28 +415,29 @@ background:  rgb(0, 128, 128,0.1);
 border-radius: 4px;
 
 }
-/*конец список квартир*/
-
-
-/*страница объекта */
+/* контейнер страницы объекта */
 .apartment-page-container{
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+/* контейнер фотогалерии объекта */
 .apartment-image-container{
-  max-width: 600px;
+  max-width: 850px;
   padding: 15px;
 }
+/* фотогалерея объекта */
 .apartment-image-container img{
  width: 100%;
  height:100%;
 }
+/* контейнер информации об объекте в двух таблицах */
 .apartment-table-wrapper{
   max-width: 600px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
 }
 .apartment-description{
   padding: 10px;
@@ -405,9 +455,10 @@ border-radius: 4px;
   top: 10px;
   z-index:2;
 }
+/* swiper */
 .object-gallery{
   max-width: 100%;
-  height: 400px;
+  height: 600px;
 }
 
 .object-gallery .swiper-button-prev::after,.object-gallery .swiper-button-next::after{

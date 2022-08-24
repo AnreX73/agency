@@ -11,16 +11,21 @@ def index(request):
         'main_page_img': Graphics.objects.get(description='изображение на главную'),
         'main_page_slogan': Graphics.objects.get(description='Слоган'),
         'main_page_hot_button': Graphics.objects.get(description='горячая кнопка на главной'),
-        'in_city_object_type': InCityObjectType.objects.all(),
-        'out_city_object_type': OutCityObjectType.objects.all(),
+        
     }
     return render(request, 'agency/index.html', context=context)
 
 
 def apartments(request):
     context = {
-        'apartments': InCityObject.objects.all(),
-        'grath': Graphics.objects.get(description='иконка квартир')
+        'apartments':InCityObject.objects.filter(object_type__title='Квартира'),
+        'apartments_icon': Graphics.objects.get(description='иконка квартир'),
+        'new_apartments':InCityObject.objects.filter(object_type__title='Новостройка'),
+        'new_apartments_icon': Graphics.objects.get(description='иконка новостроек'),
+        'mini_apartments':InCityObject.objects.filter(object_type__title='Комната'),
+        'mini_apartments_icon': Graphics.objects.get(description='иконка комнаты'),
+       
+        
     }
     return render(request, 'agency/apartments.html', context=context)
 
