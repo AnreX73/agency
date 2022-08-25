@@ -101,8 +101,8 @@ h6 {
 }
 body {
 font-family: 'Oswald', sans-serif;
-height:100%;
-
+height:auto;
+width:100%;
 }
 h2{
   font-size: 1.5rem;
@@ -129,7 +129,7 @@ td{
     margin: 0 auto;
     max-width: var(--content-size);
     background:rgb(0, 128, 128, 0.03);
-    height: 100vw;
+    height: auto;
     padding: 30px;
     display: flex;
     flex-direction: column;    
@@ -190,22 +190,22 @@ header .header-phone{
 .main-page-all-wrapper{
   position: relative;
   width:100%;
-  height: 100%;
+  height: 100vh;
 }
 /*оболочка навигации на главной странице*/
 .main-page-nav{
   position: absolute;
   left:10%;
-  top: 15%;
+  top: 35%;
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
   font-size:1.5rem;
 }
 /*элементы навигации главной страницы*/
-.main-page-nav .nav-item{
+ .nav-item{
   border-left: 1px solid rgb(0, 128, 128);
-  padding:8px;
+  padding:10px;
   border-radius: 4px;
   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
   7px 7px 20px 0px rgba(0,0,0,.1),
@@ -315,6 +315,7 @@ background: var(--wild-text);
 .all-list-page-wrapper{
   display: grid;
   grid-template-columns: 3fr 1fr;
+
   /* justify-items: center; */
 }
 .list-wrapper {
@@ -333,10 +334,10 @@ align-items: center;
 }
 .list-page-nav{
   position: fixed;
-  right: 400px;
-  
+  right: calc(100vw / 5 );
+
 }
- .nav-item{
+.list-page-nav .nav-item{
   margin-bottom: 5px;
   border-left: 1px solid rgb(0, 128, 128);
   padding:10px;
