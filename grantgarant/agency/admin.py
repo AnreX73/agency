@@ -119,6 +119,21 @@ class GalleryAdmin(admin.ModelAdmin):
     gethtmlPhoto.short_description = 'миниатюра'
 
 
+
+@admin.register(Gallery2)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ('galleryLink2', 'gethtmlPhoto', 'note2',)
+    list_display_links = ('galleryLink2', 'note2')
+    search_fields = ('galleryLink2',)
+    save_on_top = True
+
+    def gethtmlPhoto(self, picture):
+        if picture.gallery_image2:
+            return mark_safe(f"<img src='{picture.gallery_image2.url}' width=50>")
+
+    gethtmlPhoto.short_description = 'миниатюра'
+
+
 @admin.register(OutCityObjectType)
 class OutCityObjectTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'title','slug')

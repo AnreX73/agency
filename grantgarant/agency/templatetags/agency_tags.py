@@ -28,4 +28,6 @@ def show_nav():
         'out_city_object_type':out_city_object_type 
            
     }
+
+
     

@@ -102,7 +102,8 @@ h6 {
 body {
 font-family: 'Oswald', sans-serif;
 height:auto;
-width:100%;
+max-width:100%;
+/* padding: 10px; */
 }
 h2{
   font-size: 1.5rem;
@@ -140,8 +141,8 @@ td{
 /*шапка*/
 header{
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 15px;
+  grid-template-columns: repeat(12,1fr);
+  gap: 10px;
   width: 100%;
   max-width: var(--content-size);
   text-align: center;
@@ -157,6 +158,7 @@ header{
 }
 /*контейнер логотипа в шапке*/
 header .logo-box {
+  grid-column: span 2;
   max-width: 100%;
   height: auto;
   padding: 5px;
@@ -169,6 +171,8 @@ header .logo-box {
   }
   /*значок телефона в шапке*/
 header .phone-box{
+  justify-self: left;
+  grid-column: 2 / span 4;
   display: grid;
   grid-template-columns: repeat(2,1fr);
   justify-items: center;
@@ -185,6 +189,9 @@ header .phones-wrapper{
 /* телефоны в шапке*/
 header .header-phone{
   padding: 3px;
+}
+.contact-link-box{
+  grid-column: 4 / span 12;
 }
 /*оболочка главной страницы*/
 .main-page-all-wrapper{
@@ -314,7 +321,7 @@ background: var(--wild-text);
 /*контейнер списка объектов*/
 .all-list-page-wrapper{
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr;
 
   /* justify-items: center; */
 }
@@ -332,10 +339,15 @@ justify-items: left;
 align-items: center;
 /* padding: 25px; */
 }
-.list-page-nav{
+/* .list-page-nav{
   position: fixed;
-  right: calc(100vw / 5 );
-
+  right: calc((100vw - 1280px) / 2 + 20px);
+}
+@media (max-width: 1280px) {
+  .list-page-nav{
+    right: 1vw;
+  }
+  
 }
 .list-page-nav .nav-item{
   margin-bottom: 5px;
@@ -351,12 +363,10 @@ align-items: center;
   background: teal;
   color: #fff;
   transition:300ms ease all;
-}
-/*контейнер одиночного объекта в списке*/
-.apartment-all-page-container{
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-}
+} */
+
+
+/*контейнер одиночного объекта в списке объектов*/
 .apartment-container{
   border-radius:4px;
   border:1px solid rgb(0, 0, 0, 0.2);
@@ -367,6 +377,7 @@ align-items: center;
 .apartment-container:hover{
   background-color:rgb(0, 128, 128,0.1); 
 }
+
 /*главное фото объкта и цена в списке объектов*/
 .img-price-container{
 position:relative;
@@ -392,6 +403,7 @@ padding:10px;
 position:absolute;
 border-radius:4px;
 }
+/*щтметка о горячей продаже*/
 .hot{
   width: 40px;
   height: 40px;
@@ -414,9 +426,14 @@ gap: 5px;
 font-size: 1.1rem;
 background:  rgb(0, 128, 128,0.1);
 border-radius: 4px;
-
 }
-/* контейнер страницы объекта */
+
+
+/* контейнер одиночной страницы объекта */
+.apartment-all-page-container{
+  display: grid;
+  grid-template-columns: 1fr;
+}
 .apartment-page-container{
   text-align: center;
   display: flex;
@@ -425,9 +442,14 @@ border-radius: 4px;
 }
 /* контейнер фотогалерии объекта */
 .apartment-image-container{
-  max-width: 850px;
+  max-width: 1000px;
   padding: 15px;
 }
+@media (max-width: 1024px) {
+  .apartment-image-container{
+    max-width: 700px;
+  }
+} 
 /* фотогалерея объекта */
 .apartment-image-container img{
  width: 100%;

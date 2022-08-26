@@ -408,7 +408,7 @@ class OutCityObject(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('show_object', kwargs={'object_slug': self.slug})
+        return reverse('show_dacha', kwargs={'dacha_slug': self.slug})
 
     class Meta:
         verbose_name = 'Загородный объект'
@@ -460,6 +460,21 @@ class Gallery(models.Model):
         verbose_name = 'фото объекта'
         verbose_name_plural = 'фото объекта'
         ordering = ['galleryLink']
+
+
+class Gallery2(models.Model):
+    galleryLink2 = models.ForeignKey(OutCityObject, on_delete=models.PROTECT, verbose_name='Ссылка на объект')
+    gallery_image2 = models.ImageField(upload_to="images", blank=True, verbose_name='Фото')
+    note2 = models.CharField(blank=True, max_length=100, verbose_name='примечание')
+    is_published = models.BooleanField(default=True, verbose_name='Публикация')
+
+    def __str__(self):
+        return self.note2
+
+    class Meta:
+        verbose_name = 'фото объекта'
+        verbose_name_plural = 'фото загородного объекта'
+        ordering = ['galleryLink2']
 
 
 # Контактная информация
