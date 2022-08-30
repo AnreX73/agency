@@ -172,7 +172,7 @@ header .logo-box {
   /*значок телефона в шапке*/
 header .phone-box{
   justify-self: left;
-  grid-column: 2 / span 4;
+  grid-column: 2 / span 3;
   display: grid;
   grid-template-columns: repeat(2,1fr);
   justify-items: center;
@@ -191,7 +191,7 @@ header .header-phone{
   padding: 3px;
 }
 .contact-link-box{
-  grid-column: 4 / span 12;
+  grid-column: 8 / span 1;
 }
 /*оболочка главной страницы*/
 .main-page-all-wrapper{
@@ -207,21 +207,19 @@ header .header-phone{
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  font-size:1.5rem;
+  font-size:1.3rem;
 }
 /*элементы навигации главной страницы*/
  .nav-item{
-  border-left: 1px solid rgb(0, 128, 128);
-  padding:10px;
-  border-radius: 4px;
-  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-  7px 7px 20px 0px rgba(0,0,0,.1),
-  4px 4px 5px 0px rgba(0,0,0,.1);
+  border-left: 1px solid rgb(0, 128, 128, 0.5);
+  padding:8px 12px;
+
 }
 .main-page-nav .nav-item:hover{
   background: teal;
   color: #fff;
   transition:300ms ease all;
+  border-radius:4px;
 }
 /*стили для слогана*/
 .main-page-slogan{
@@ -232,9 +230,9 @@ header .header-phone{
 /*стили для картинки на главной*/
 .main-page-img-wrapper{
   position: absolute;
-  width:600px;
-  height:600px;
-  right:10px;
+  width:550px;
+  height:550px;
+  right:20px;
   top:150px;
   border-radius:50%; 
 }

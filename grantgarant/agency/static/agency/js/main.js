@@ -12,7 +12,7 @@ const swiper = new Swiper('.object-gallery', {
    
   },
   effect:'flip',
-  speed:600,
+  speed:1000,
   loop: true,
   grabCursor:true,
 
@@ -31,4 +31,6 @@ const swiper = new Swiper('.object-gallery', {
     el: '.swiper-scrollbar',
   },
 });
+
+
 });
