@@ -142,7 +142,7 @@ td{
 header{
   display: grid;
   grid-template-columns: repeat(12,1fr);
-  gap: 10px;
+  gap: 20px;
   width: 100%;
   max-width: var(--content-size);
   text-align: center;
@@ -154,7 +154,7 @@ header{
   padding: 5px;
   z-index: 12;
   align-items: center;
-  overflow: hidden;
+  
 }
 /*контейнер логотипа в шапке*/
 header .logo-box {
@@ -190,8 +190,63 @@ header .phones-wrapper{
 header .header-phone{
   padding: 3px;
 }
-.contact-link-box{
-  grid-column: 8 / span 1;
+/*элементы навигации главной страницы*/
+.header-nav{
+  grid-column: 8 / span 5;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+}
+.header-nav-item{
+  cursor: pointer;
+  position: relative;
+}
+.header-open-nav{
+  opacity: 0;
+  visibility: hidden;
+  width: 350px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 20px;
+  row-gap: 10px;
+  background:#fff;
+  position: absolute;
+  text-align: left;
+  margin-top: 10px; 
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.sale-open{
+  right: 25px;
+}
+.header-open-nav.active{
+  opacity: 1;
+   visibility: visible;
+   transition: all 0.5s ease-in-out;
+}
+
+
+.open-nav-item{
+  padding: 5px;
+  /* width: max-content; */
+}
+
+
+.open-nav-item:hover{
+  border-bottom: 2px solid rgb(0, 128, 128,0.2);
+  transition: 200ms ease all;
+}
+.contact-link{
+  grid-column: 4 / span 2 ;
+  padding-bottom: 5px;
+}
+.contact-link:hover{
+  border-bottom: 2px solid rgb(0, 128, 128,0.2);
+  transition: 200ms ease all;
 }
 /*оболочка главной страницы*/
 .main-page-all-wrapper{
@@ -209,18 +264,8 @@ header .header-phone{
   gap: 10px;
   font-size:1.3rem;
 }
-/*элементы навигации главной страницы*/
- .nav-item{
-  border-left: 1px solid rgb(0, 128, 128, 0.5);
-  padding:8px 12px;
 
-}
-.main-page-nav .nav-item:hover{
-  background: teal;
-  color: #fff;
-  transition:300ms ease all;
-  border-radius:4px;
-}
+
 /*стили для слогана*/
 .main-page-slogan{
   font-size:60px;

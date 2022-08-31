@@ -1,4 +1,5 @@
 
+
 <header>
 
 <a href='{% url "home" %}'><div class="header-items logo-box">  <img  src="{{logo.image.url}}" alt="{{logo.description}}" /></div> </a>
@@ -6,18 +7,36 @@
      <img  src="{{phone_icon.image.url}}" alt="{{phone_icon.title}}" />
      <div class="phones-wrapper">
         {% for cont in contacts %}
-        {% if cont.extra_description == 'тел.' %}
         <div class="header-phone">
         {{cont.description}}
         </div>
-        {% endif %}
         {% endfor %}
      </div>
 
 </div>
-<div class="header-items contact-link-box"><a  href="{% url 'dacha'%}" >дачи</a></div>
-<a href="{% url 'apartments'%}"><div class="header-items contact-link-box">квартиры</div></a>
+<div class="header-items header-nav">
+   <div class="header-nav-item" data-open="sale">продажа
+      <div class="header-open-nav sale-open" data-open="sale">
+      {% for incity in in_city_object_type %}
+        <a href="{% url 'apartments'%}"><div class="open-nav-item">{{incity.title }}</div></a>
+    {% endfor %}
+    {% for incity in out_city_object_type %}
+        <a href="{% url 'home'%}"><div class="open-nav-item">{{incity.title}}</div></a>
+    {% endfor %}
+   </div>
+   </div>
+   <div class="header-nav-item"data-open="rent">аренда
+      <div class="header-open-nav rent open" data-open="rent">
+         {% for incity in in_city_object_type %}
+         {% if incity.title == 'Квартира' or incity.title == 'Комната' %}
+           <a href="{% url 'apartments'%}"><div class="open-nav-item">{{incity.title }}</div></a>
+         {% endif %}
+         {% endfor %}
+      </div>
+   </div>
+   <div class="header-nav-item">услуги</div>
+   <div class="header-nav-item contact-link">контакты</div>
+</div>
 
-<a href=""><div class="header-items contact-link-box">{{catalog_link}}</div></a>
 </header>
 

@@ -7,27 +7,29 @@ register = template.Library()
 
 @register.inclusion_tag('agency/header.html')
 def show_header():
-    contacts = Contacts.objects.all()
+    contacts = Contacts.objects.filter(extra_description='тел.' )
     logo = Graphics.objects.get(note='logo')
     phone_icon = Graphics.objects.get(description='иконка телефона')
-    catalog_link = 'каталог'
+    in_city_object_type = InCityObjectType.objects.filter(in_main_page=True)
+    out_city_object_type = OutCityObjectType.objects.filter(in_main_page=True)
     return {"contacts": contacts,
             "logo": logo,
-            "catalog_link": catalog_link,
             'phone_icon': phone_icon,
+            'in_city_object_type': in_city_object_type,
+            'out_city_object_type': out_city_object_type
             }
 
 
-@register.inclusion_tag('agency/nav.html')
-def show_nav():
-    in_city_object_type = InCityObjectType.objects.all()
-    out_city_object_type = OutCityObjectType.objects.all()
+# @register.inclusion_tag('agency/nav.html')
+# def show_nav():
+#     in_city_object_type = InCityObjectType.objects.all()
+#     out_city_object_type = OutCityObjectType.objects.all()
 
-    return {
-        'in_city_object_type': in_city_object_type,
-        'out_city_object_type': out_city_object_type
+#     return {
+#         'in_city_object_type': in_city_object_type,
+#         'out_city_object_type': out_city_object_type
 
-    }
+#     }
 
 
 @register.inclusion_tag('agency/items_list.html')
