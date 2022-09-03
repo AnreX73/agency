@@ -15,27 +15,39 @@
 
 </div>
 <div class="header-items header-nav">
-   <div class="header-nav-item" data-open="sale">продажа
-      <div class="header-open-nav sale-open" data-open="sale">
-      {% for incity in in_city_object_type %}
-        <a href="{% url 'apartments'%}"><div class="open-nav-item">{{incity.title }}</div></a>
-    {% endfor %}
-    {% for incity in out_city_object_type %}
-        <a href="{% url 'home'%}"><div class="open-nav-item">{{incity.title}}</div></a>
-    {% endfor %}
-   </div>
-   </div>
-   <div class="header-nav-item"data-open="rent">аренда
-      <div class="header-open-nav rent open" data-open="rent">
-         {% for incity in in_city_object_type %}
-         {% if incity.title == 'Квартира' or incity.title == 'Комната' %}
-           <a href="{% url 'apartments'%}"><div class="open-nav-item">{{incity.title }}</div></a>
-         {% endif %}
-         {% endfor %}
-      </div>
-   </div>
-   <div class="header-nav-item">услуги</div>
-   <div class="header-nav-item contact-link">контакты</div>
+   <nav role="navigation">
+      <ul>
+        <li><a href="/sitemap">Продажа</a>
+         <ul>
+            {% for incity in in_city_object_type %}
+            {% if  incity.in_main_page %}
+            <li><a href="{% url 'apartments'%}">{{incity.title}}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% for incity in out_city_object_type %}
+            {% if  incity.in_main_page %}
+            <li><a href="{% url 'apartments'%}">{{incity.title}}</a></li>
+            {% endif %}
+            {% endfor %} 
+          </ul>
+
+        </li>
+        <li><a href="/sitemap">Аренда</a>
+          <ul>
+            {% for incity in in_city_object_type %}
+            {% if incity.title == 'Квартира' or incity.title == 'Комната' %}
+            <li><a href="{% url 'apartments'%}">{{incity.title}}</a></li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+        <li><a href="/sitemap">услуги</a></li>
+        <li><a href="/contact">контакты</a></li>
+        
+      </ul>
+   </nav>
+      
+  
 </div>
 
 </header>

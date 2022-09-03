@@ -35,35 +35,4 @@ const swiper = new Swiper('.object-gallery', {
   },
 });
 
-openDropNav = document.querySelectorAll('.header-nav-item');
-dropNav = document.querySelectorAll('.header-open-nav');
-
-openDropNav.forEach(function(item){
-  /* Назначаем каждой ссылке обработчик клика */
-  item.addEventListener('mouseover', function(e) {
-      e.preventDefault();
-      /* ищем подменю по атрибуту ссылки */
-      var openDrop = this.getAttribute('data-open');
-
-      navWindow = document.querySelector('.header-open-nav[data-open ="' + openDrop + '"]');
-      navWindow.classList.add('active');
-   });
-
-  });
-
-dropNav.forEach(function(item){
-  /* Назначаем каждой ссылке обработчик клика */
-  item.addEventListener('mouseout', function(e) {
-      // e.preventDefault();
-      /* ищем подменю по атрибуту ссылки */
-      // var openDrop = this.getAttribute('data-open');
-
-      // navWindow = document.querySelector('.header-open-nav[data-open ="' + openDrop + '"]');
-      var parentModal = this.closest('.header-open-nav');
-             parentModal.classList.remove('active');
-   });
-
-  });
-
-
 });
