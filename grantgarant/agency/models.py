@@ -1,3 +1,5 @@
+from distutils.command.upload import upload
+from operator import mod
 from django.db import models
 from ckeditor.fields import RichTextField
 
@@ -8,10 +10,16 @@ from django.urls import reverse
 class InCityObjectType(models.Model):
     title = models.CharField(max_length=100, verbose_name='Тип объекта')
     slug = models.SlugField(unique=True, max_length=100, db_index=True, verbose_name='URL')
+    icon = models.ImageField(upload_to="images", blank=True, verbose_name='иконка(картинка) для типа объекта')
     in_main_page = models.BooleanField(default=True, verbose_name='в меню на главной странице')
 
     def __str__(self):
         return self.title
+
+    # def get_absolute_url(self):
+    #     return reverse('show_obj_of_type', kwargs={'obj_type_slug': self.slug})
+
+        
 
     class Meta:
         verbose_name = 'Тип объекта'
@@ -173,6 +181,7 @@ class InCityObject(models.Model):
 class OutCityObjectType(models.Model):
     title = models.CharField(max_length=100, verbose_name='Тип загородного объекта')
     slug = models.SlugField(unique=True, max_length=100, db_index=True, verbose_name='URL')
+    icon = models.ImageField(upload_to="images", blank=True, verbose_name='иконка(картинка) для типа объекта')
     in_main_page = models.BooleanField(default=True, verbose_name='в меню на главной странице')
 
     def __str__(self):

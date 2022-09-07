@@ -17,9 +17,9 @@ def index(request):
 
 def apartments(request):
     context = {
-        'apartments_icon': Graphics.objects.get(description='иконка квартир'),
-        'new_apartments_icon': Graphics.objects.get(description='иконка новостроек'),
-        'mini_apartments_icon': Graphics.objects.get(description='иконка комнаты'),
+        'apartments_icon': InCityObjectType.objects.get(title='Квартиры'),
+        'new_apartments_icon': InCityObjectType.objects.get(title='Новостройки'),
+        'mini_apartments_icon': InCityObjectType.objects.get(title='Комнаты'),
     }
     return render(request, 'agency/apartments.html', context=context)
 

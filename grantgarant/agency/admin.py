@@ -5,11 +5,17 @@ from agency.models import *
 
 @admin.register(InCityObjectType)
 class InCityObjectTypeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title','slug')
+    list_display = ('id','gethtmlPhoto', 'title','slug')
     list_display_links = ('id', 'title')
     search_fields = ('title',)
     prepopulated_fields = {'slug': ('title',)}
     save_on_top = True
+
+    def gethtmlPhoto(self, picture):
+        if picture.icon:
+            return mark_safe(f"<img src='{picture.icon.url}' width=50>")
+
+    gethtmlPhoto.short_description = 'миниатюра'
 
 
 class InCityRegionAdmin(admin.ModelAdmin):
@@ -136,11 +142,19 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(OutCityObjectType)
 class OutCityObjectTypeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title','slug')
+    list_display = ('id','gethtmlPhoto', 'title','slug')
     list_display_links = ('id', 'title')
     search_fields = ('title',)
     prepopulated_fields = {'slug': ('title',)}
     save_on_top = True
+
+    def gethtmlPhoto(self, picture):
+        if picture.icon:
+            return mark_safe(f"<img src='{picture.icon.url}' width=50>")
+            
+    gethtmlPhoto.short_description = 'миниатюра'
+    
+    
 #
 
 @admin.register(TypeOfOwnership)

@@ -5,24 +5,32 @@
 {% block content %}
 <div class="all-list-page-wrapper">
     <div class="lists-wrapper">
-        
-        <div class="list-wrapper">
-            <div class="logo-title">
+        <div class="tabs-links">
+            <div class="logo-and-title active">
                 <img src="{{dacha_icon.image.url}}" alt="{{dacha_icon.note|safe}}">
                 <span class="apartment-logo-title"><h2>{{dacha_icon.note|safe}}</h2></span>
             </div>
+            <div class="logo-and-title">
+                <img src="{{cottage_icon.image.url}}" alt="{{cottage_icon.note|safe}}">
+                <span class="apartment-logo-title"><h2>{{cottage_icon.note|safe}}</h2></span>
+            </div>
+            <div class="logo-and-title">
+                <img src="{{land_icon.image.url}}" alt="{{land_icon.note|safe}}">
+                <span class="apartment-logo-title"><h2>{{land_icon.note|safe}}</h2></span>
+            </div>
             
-            <div class="apartments-container">  
+        </div>
+        
+        <div class="list-wrapper">
+            
+            
+            <div class="apartments-container active">  
             {% show_apa obj_list_type='outcity' obj_type='Дача'%}
             </div>
             
         
         </div>
         <div class="list-wrapper">
-            <div class="logo-title">
-                <img src="{{cottage_icon.image.url}}" alt="{{cottage_icon.note|safe}}">
-                <span class="apartment-logo-title"><h2>{{cottage_icon.note|safe}}</h2></span>
-            </div>
             
             <div class="apartments-container">  
            {% show_apa obj_list_type='outcity' obj_type='Коттедж'%}
@@ -30,10 +38,7 @@
         
         </div>
         <div class="list-wrapper">
-            <div class="logo-title">
-                <img src="{{land_icon.image.url}}" alt="{{land_icon.note|safe}}">
-                <span class="apartment-logo-title"><h2>{{land_icon.note|safe}}</h2></span>
-            </div>
+           
             
             <div class="apartments-container">  
             {% show_apa obj_list_type='outcity' obj_type='Земельный участок'%}

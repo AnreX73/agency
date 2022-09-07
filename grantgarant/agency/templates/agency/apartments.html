@@ -3,38 +3,46 @@
 {% load agency_tags %}
 
 {% block content %}
+
+
+
 <div class="all-list-page-wrapper">
     <div class="lists-wrapper">
-        
-        <div class="list-wrapper">
-            <div class="logo-title">
-                <img src="{{new_apartments_icon.image.url}}" alt="{{ap.title}}">
-                <span class="apartment-logo-title"><h2>{{new_apartments_icon.note|safe}}</h2></span>
+        <div class="tabs-links">
+            <div class="logo-and-title" data-tab = "#{{new_apartments_icon.slug}}">
+                <img src="{{new_apartments_icon.icon.url}}" alt="{{new_apartments_icon.title}}">
+                <span class="apartment-logo-title"><h2>{{new_apartments_icon.title}}</h2></span>
             </div>
             
-            <div class="apartments-container">  
-         {% show_apa obj_type='Новостройка'%}
+            <div class="logo-and-title" data-tab = "#{{apartments_icon.slug}}">
+                <img src="{{apartments_icon.icon.url}}" alt="{{apartments_icon.title}}">
+                <span class="apartment-logo-title"><h2>{{apartments_icon.title}}</h2></span>
+            </div>
+            
+            <div class="logo-and-title" data-tab = "#{{mini_apartments_icon.slug}}">
+                <img src="{{mini_apartments_icon.icon.url}}" alt="{{mini_apartments_icon.title}}">
+                <span class="apartment-logo-title"><h2>{{mini_apartments_icon.title}}</h2></span>
+            </div>
+        </div>
+        
+        <div class="list-wrapper">
+            <div id ="{{new_apartments_icon.slug}}" class="apartments-container">  
+         {% show_apa obj_type='Новостройки'%}
             </div>
         </div>
 
         <div class="list-wrapper">
-            <div class="logo-title">
-                <img src="{{apartments_icon.image.url}}" alt="{{ap.title}}">
-                <span class="apartment-logo-title"><h2>{{apartments_icon.note|safe}}</h2></span>
-            </div>
             
-            <div class="apartments-container">  
-            {% show_apa obj_type='Квартира'%}
+            
+            <div id ="{{apartments_icon.slug}}" class="apartments-container">  
+            {% show_apa obj_type='Квартиры'%}
             </div>
         
         </div>
         <div class="list-wrapper">
-            <div class="logo-title">
-                <img src="{{mini_apartments_icon.image.url}}" alt="{{ap.title}}">
-                <span class="apartment-logo-title"><h2>{{mini_apartments_icon.note|safe}}</h2></span>
-            </div>
-            <div class="apartments-container">  
-           {% show_apa obj_type='Комната'%}
+            
+            <div id ="{{mini_apartments_icon.slug}}" class="apartments-container">  
+           {% show_apa obj_type='Комнаты'%}
             </div>
         
         </div>
