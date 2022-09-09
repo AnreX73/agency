@@ -33,11 +33,12 @@ def show_header():
 
 
 @register.inclusion_tag('agency/items_list.html')
-def show_apa(obj_list_type='city', obj_type='Квартира'):
+def show_apa(obj_list_type='city', obj_type='vtorichnoe-zhile'):
     if obj_list_type == 'city':
-        selected_items = InCityObject.objects.filter(object_type__title=obj_type).order_by('-time_create')
+        selected_items = InCityObject.objects.filter(object_type__slug=obj_type).filter(is_for_sale=True).order_by('-time_create')
+      
     else:
-        selected_items = OutCityObject.objects.filter(object_type__title=obj_type).order_by('-time_create')
+        selected_items = OutCityObject.objects.filter(object_type__slug=obj_type).filter(is_for_sale=True).order_by('-time_create')
 
     return {
         'selected_items': selected_items,

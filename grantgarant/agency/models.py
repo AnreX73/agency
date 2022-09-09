@@ -16,8 +16,8 @@ class InCityObjectType(models.Model):
     def __str__(self):
         return self.title
 
-    # def get_absolute_url(self):
-    #     return reverse('show_obj_of_type', kwargs={'obj_type_slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('show_apartments', kwargs={'obj_type_slug': self.slug})
 
         
 

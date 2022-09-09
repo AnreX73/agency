@@ -17,11 +17,11 @@
 <div class="header-items header-nav">
    <nav role="navigation">
       <ul>
-        <li><a href="/apartments">Продажа</a>
+        <li><a href="">Продажа</a>
          <ul>
             {% for incity in in_city_object_type %}
             {% if  incity.in_main_page %}
-            <li data-link ='{{incity.slug}}' ><a href="{% url 'apartments'%}">{{incity.title}}</a></li>
+            <li data-link ='{{incity.slug}}' ><a href="{{incity.get_absolute_url}}">{{incity.title}}</a></li>
             {% endif %}
             {% endfor %}
             {% for incity in out_city_object_type %}
@@ -36,7 +36,7 @@
           <ul>
             {% for incity in in_city_object_type %}
             {% if incity.title == 'Квартиры' or incity.title == 'Комнаты' %}
-            <li data-link ='{{incity.slug}}'><a href="{% url 'apartments'%}">{{incity.title}}</a></li>
+            <li data-link ='{{incity.slug}}'><a href="">{{incity.title}}</a></li>
             {% endif %}
             {% endfor %}
           </ul>

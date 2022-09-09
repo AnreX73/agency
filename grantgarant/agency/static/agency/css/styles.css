@@ -387,24 +387,28 @@ background: var(--wild-text);
 }
 
 /*список квартир*/
-.tabs-links{
-  display: flex;
+.apartments-links-wrapper{
+  display:flex;
+  align-items: center;
+  margin-bottom:20px;
 }
+
 .logo-and-title{
   display: flex;
   padding: 10px;
   margin-bottom: 10px;
   cursor: pointer;
-}
-.logo-and-title:hover{
-background: var(--light-teal);
-}
-.logo-and-title.active{
-  /* background: var(--light-teal); */
-  border-radius: 4px;
   box-shadow:var(--complex-shadow);
-
+  border-radius: 4px;
 }
+.unselected{
+  opacity: 0.5;
+  box-shadow:none;
+}
+.unselected  h2{
+  font-size: 1rem;
+}
+
 /*контейнер списка объектов*/
 .all-list-page-wrapper{
   display: grid;
@@ -419,18 +423,16 @@ background: var(--light-teal);
   flex-direction: column;
 }
 .apartments-container{
-
+display: grid;
 grid-template-columns: repeat(3,1fr);
 column-gap:10px;
 row-gap: 30px;
 justify-items: left;
 align-items: center;
 /* padding: 25px; */
-display: none;
+
 }
-.apartments-container.active{
-  display: grid;
-}
+
 
 /*контейнер одиночного объекта в списке объектов*/
 .apartment-container{
@@ -566,7 +568,6 @@ border-radius: 4px;
   height: 100%;
   object-fit:contain;
 }
-
 
 
 

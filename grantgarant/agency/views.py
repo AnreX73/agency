@@ -15,13 +15,18 @@ def index(request):
     return render(request, 'agency/index.html', context=context)
 
 
-def apartments(request):
+
+def show_apartments(request, obj_type_slug):
+    apartments_type = get_object_or_404(InCityObjectType, slug=obj_type_slug)
+    unselected_links = InCityObjectType.objects.exclude(slug=obj_type_slug)
     context = {
-        'apartments_icon': InCityObjectType.objects.get(title='Квартиры'),
-        'new_apartments_icon': InCityObjectType.objects.get(title='Новостройки'),
-        'mini_apartments_icon': InCityObjectType.objects.get(title='Комнаты'),
+        'apartments_type': apartments_type,
+        'unselected_links':unselected_links,
+        
     }
-    return render(request, 'agency/apartments.html', context=context)
+    return render(request, 'agency/show_apartments.html', context=context)
+
+
 
 
 def dacha(request):
@@ -33,6 +38,8 @@ def dacha(request):
     return render(request, 'agency/dachas.html', context=context)
 
 
+
+
 def show_apartment(request, apartment_slug):
     apartment = get_object_or_404(InCityObject, slug=apartment_slug)
     apartment_id = apartment.id
@@ -41,6 +48,10 @@ def show_apartment(request, apartment_slug):
         'gallery': Gallery.objects.filter(galleryLink_id=apartment_id)
     }
     return render(request, 'agency/apartment.html', context=context)
+
+
+
+
 
 
 def show_dacha(request, dacha_slug):
