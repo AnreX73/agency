@@ -1,0 +1,12 @@
+{% extends 'agency/base.html' %}
+{% load agency_tags %}
+
+{% block content %}
+
+<h1>Forms</h1>
+<form action="{ url search_obj%}" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit">Найти</button>
+</form>
+{% endblock content %}

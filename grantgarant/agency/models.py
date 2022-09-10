@@ -187,6 +187,9 @@ class OutCityObjectType(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('show_dachas', kwargs={'obj_type_slug': self.slug})
+
     class Meta:
         verbose_name = 'Тип загородного объекта'
         verbose_name_plural = 'Тип загородного объекта'

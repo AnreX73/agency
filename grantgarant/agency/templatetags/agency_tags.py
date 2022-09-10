@@ -20,18 +20,6 @@ def show_header():
             }
 
 
-# @register.inclusion_tag('agency/nav.html')
-# def show_nav():
-#     in_city_object_type = InCityObjectType.objects.all()
-#     out_city_object_type = OutCityObjectType.objects.all()
-
-#     return {
-#         'in_city_object_type': in_city_object_type,
-#         'out_city_object_type': out_city_object_type
-
-#     }
-
-
 @register.inclusion_tag('agency/items_list.html')
 def show_apa(obj_list_type='city', obj_type='vtorichnoe-zhile'):
     if obj_list_type == 'city':

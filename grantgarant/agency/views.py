@@ -1,6 +1,7 @@
 from multiprocessing.sharedctypes import Value
 from django.shortcuts import render, get_object_or_404
 
+from agency.forms import SearchForm
 from agency.models import *
 
 
@@ -15,29 +16,26 @@ def index(request):
     return render(request, 'agency/index.html', context=context)
 
 
-
 def show_apartments(request, obj_type_slug):
     apartments_type = get_object_or_404(InCityObjectType, slug=obj_type_slug)
     unselected_links = InCityObjectType.objects.exclude(slug=obj_type_slug)
     context = {
         'apartments_type': apartments_type,
-        'unselected_links':unselected_links,
-        
+        'unselected_links': unselected_links,
+
     }
     return render(request, 'agency/show_apartments.html', context=context)
 
 
-
-
-def dacha(request):
+def show_dachas(request, obj_type_slug):
+    dachas_type = get_object_or_404(OutCityObjectType, slug=obj_type_slug)
+    unselected_links = OutCityObjectType.objects.exclude(slug=obj_type_slug)
     context = {
-        'dacha_icon': Graphics.objects.get(description='иконка загородной недвижимости'),
-        'cottage_icon': Graphics.objects.get(description='иконка коттеджа'),
-        'land_icon': Graphics.objects.get(description='иконка земельного участка'),
+        'dachas_type': dachas_type,
+        'unselected_links': unselected_links,
+
     }
-    return render(request, 'agency/dachas.html', context=context)
-
-
+    return render(request, 'agency/show_dachas.html', context=context)
 
 
 def show_apartment(request, apartment_slug):
@@ -50,10 +48,6 @@ def show_apartment(request, apartment_slug):
     return render(request, 'agency/apartment.html', context=context)
 
 
-
-
-
-
 def show_dacha(request, dacha_slug):
     dacha = get_object_or_404(OutCityObject, slug=dacha_slug)
     dacha_id = dacha.id
@@ -63,3 +57,8 @@ def show_dacha(request, dacha_slug):
 
     }
     return render(request, 'agency/dacha.html', context=context)
+
+
+def search_obj(request):
+    form = SearchForm()
+    return render(request, 'agency/search_obj.html', {'form': form})
