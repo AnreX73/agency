@@ -6,11 +6,13 @@ from agency.models import *
 
 
 def index(request):
+    form = SearchForm()
     context = {
         'title': 'Агенство Грант Гарант',
         'main_page_img': Graphics.objects.get(description='изображение на главную'),
         'main_page_slogan': Graphics.objects.get(description='Слоган'),
         'main_page_hot_button': Graphics.objects.get(description='горячая кнопка на главной'),
+        'form': form
 
     }
     return render(request, 'agency/index.html', context=context)
@@ -59,6 +61,4 @@ def show_dacha(request, dacha_slug):
     return render(request, 'agency/dacha.html', context=context)
 
 
-def search_obj(request):
-    form = SearchForm()
-    return render(request, 'agency/search_obj.html', {'form': form})
+

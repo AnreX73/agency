@@ -10,6 +10,14 @@
         <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">
         <button class="custom-btn btn-5"><span>{{main_page_hot_button.note|safe}}</span></button>
     </div>
+
+    <h2>Поиск квартир</h2>
+<form class="search-form" method="get">
+    {% csrf_token %}
+
+    {{ form.as_p}}
+    <button class="submit" type="submit">Найти</button>
+</form>
    
 </div>
 

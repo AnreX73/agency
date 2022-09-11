@@ -279,7 +279,7 @@ nav{
 /*стили для слогана*/
 .main-page-slogan{
   position: absolute;
-  font-size:60px;
+  font-size:48px;
   color: teal;
   font-weight: bold;
   right: 50px;
@@ -575,6 +575,34 @@ border-radius: 4px;
   object-fit:contain;
 }
 
+.search-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  max-width: 320px;
+  justify-items: flex-end;
+  box-shadow: var(--complex-shadow);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 10px;
+
+
+}
+.search-form select{
+  padding: 5px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid var(--light-teal);
+  background: var(--light-teal);
+  min-width: 150px;
+}
 
 
 
+.search-form button{
+  padding: 2px 5px;
+  box-shadow: var(--complex-shadow);
+  font-size: 1.2rem;
+  min-width: 100px;
+  border-radius: 4px;
+}
