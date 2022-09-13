@@ -12,10 +12,9 @@
     </div>
 
     <h2>Поиск квартир</h2>
-<form class="search-form" method="get">
+<form action="{% url 'searched_obj' %}"class="search-form" method="POST">
     {% csrf_token %}
-
-    {{ form.as_p}}
+    {{ form.as_ul}}
     <button class="submit" type="submit">Найти</button>
 </form>
    

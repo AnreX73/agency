@@ -18,6 +18,14 @@ def index(request):
     return render(request, 'agency/index.html', context=context)
 
 
+def searched_obj(request):
+    context = {
+        'title': 'Агенство Грант Гарант - поиск',
+        
+    }
+    return render(request, 'agency/searched_obj.html', context=context)
+
+
 def show_apartments(request, obj_type_slug):
     apartments_type = get_object_or_404(InCityObjectType, slug=obj_type_slug)
     unselected_links = InCityObjectType.objects.exclude(slug=obj_type_slug)
