@@ -578,7 +578,6 @@ border-radius: 4px;
 }
 
 .search-form {
-  
   max-width: 320px;
   box-shadow: var(--complex-shadow);
   padding: 15px;
