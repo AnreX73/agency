@@ -12,9 +12,14 @@
     </div>
 
     <h2>Поиск квартир</h2>
-<form action="{% url 'searched_obj' %}"class="search-form" method="POST">
+<form action=" "class="search-form" method="POST" name="searched">
     {% csrf_token %}
-    {{ form.as_ul}}
+    {% for f in form %}
+    <ul>
+        <li> <label for = "{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</li> 
+        <li class="form-error">{{ f.errors }}</li>
+    </ul>
+    {% endfor %}
     <button class="submit" type="submit">Найти</button>
 </form>
    

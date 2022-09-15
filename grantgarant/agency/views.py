@@ -1,12 +1,17 @@
 from multiprocessing.sharedctypes import Value
 from django.shortcuts import render, get_object_or_404
 
-from agency.forms import SearchForm
+from agency.forms import InCitySearchForm
 from agency.models import *
 
 
 def index(request):
-    form = SearchForm()
+    if request.method == 'POST':
+        form = InCitySearchForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+    else:
+        form = InCitySearchForm()
     context = {
         'title': 'Агенство Грант Гарант',
         'main_page_img': Graphics.objects.get(description='изображение на главную'),

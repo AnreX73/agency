@@ -578,27 +578,31 @@ border-radius: 4px;
 }
 
 .search-form {
-  max-width: 320px;
+  max-width: 360px;
   box-shadow: var(--complex-shadow);
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 4px;
   margin: 10px;
-
-
 }
+
 .search-form li {
   display: grid;
   grid-template-columns:repeat(2,1fr);
   align-items: center;
   box-sizing: border-box;
+  font-size: 1.1rem;
+  color: teal;
 }
 
 .search-form select{
   padding: 5px;
   margin: 5px;
   border-radius: 8px;
-  border: 1px solid var(--light-teal);
   background: var(--light-teal);
+  width: 150px;
+  font-size: 1.1rem;
+  font-family: 'Oswald', sans-serif;
+  
  
 }
 
@@ -607,7 +611,8 @@ border-radius: 4px;
 .search-form button{
   padding: 2px 5px;
   box-shadow: var(--complex-shadow);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   min-width: 100px;
   border-radius: 4px;
+  color: teal;
 }
