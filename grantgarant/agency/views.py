@@ -6,10 +6,17 @@ from agency.models import *
 
 
 def index(request):
-    if request.method == 'POST':
-        form = InCitySearchForm(request.POST)
+    obj_list = InCityObject.objects.all()
+    if request.method == 'GET':
+        form = InCitySearchForm(request.GET)
         if form.is_valid():
-            print(form.cleaned_data)
+            # sale = form.cleaned_data.get('is_for_sale')
+            # rent = form.cleaned_data.get('is_for_rent')
+            obj_type = form.cleaned_data.get('object_type')
+            region = form.cleaned_data.get('city_region')
+            room = form.cleaned_data.get('rooms')
+            obj_list = InCityObject.objects.filter(object_type=obj_type).filter(city_region=region).filter(rooms=room)
+
     else:
         form = InCitySearchForm()
     context = {
@@ -17,7 +24,8 @@ def index(request):
         'main_page_img': Graphics.objects.get(description='изображение на главную'),
         'main_page_slogan': Graphics.objects.get(description='Слоган'),
         'main_page_hot_button': Graphics.objects.get(description='горячая кнопка на главной'),
-        'form': form
+        'form': form,
+        'obj_list': obj_list
 
     }
     return render(request, 'agency/index.html', context=context)
@@ -26,7 +34,7 @@ def index(request):
 def searched_obj(request):
     context = {
         'title': 'Агенство Грант Гарант - поиск',
-        
+
     }
     return render(request, 'agency/searched_obj.html', context=context)
 
@@ -72,6 +80,3 @@ def show_dacha(request, dacha_slug):
 
     }
     return render(request, 'agency/dacha.html', context=context)
-
-
-

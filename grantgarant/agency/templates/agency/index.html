@@ -12,7 +12,7 @@
     </div>
 
     <h2>Поиск квартир</h2>
-<form action=" "class="search-form" method="POST" name="searched">
+<form action=" "class="search-form" method="GET" name="searched">
     {% csrf_token %}
     {% for f in form %}
     <ul>
@@ -22,9 +22,11 @@
     {% endfor %}
     <button class="submit" type="submit">Найти</button>
 </form>
-   
-</div>
 
+</div>
+ {% for o in obj_list %}
+    {{o.title}}
+   {% endfor%}
 
 {% endblock content %}
 
