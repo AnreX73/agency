@@ -277,6 +277,21 @@ nav{
   height: 100vh;
 }
 
+.searching-wrapper{
+  padding:10px;
+  max-width: 360px;
+  display:grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 15px;
+}
+.searched-obj{
+ max-width:280px;
+}
+.searching-wrapper img{
+  max-width: 150px;
+
+}
+
 /*стили для слогана*/
 .main-page-slogan{
   position: absolute;
@@ -605,8 +620,6 @@ border-radius: 4px;
   
  
 }
-
-
 
 .search-form button{
   padding: 2px 5px;

@@ -6,18 +6,16 @@ from agency.models import *
 
 
 def index(request):
-    obj_list = InCityObject.objects.all()
-    if request.method == 'GET':
-        form = InCitySearchForm(request.GET)
+    if request.method == 'POST':
+        form = InCitySearchForm(request.POST)
         if form.is_valid():
-            # sale = form.cleaned_data.get('is_for_sale')
-            # rent = form.cleaned_data.get('is_for_rent')
-            obj_type = form.cleaned_data.get('object_type')
-            region = form.cleaned_data.get('city_region')
-            room = form.cleaned_data.get('rooms')
-            obj_list = InCityObject.objects.filter(object_type=obj_type).filter(city_region=region).filter(rooms=room)
+            try:
+                obj_list = InCityObject.objects.filter(**form.cleaned_data)
+            except:
+                form.add_error(None, 'ERROR')
 
     else:
+        obj_list = InCityObject.objects.all()
         form = InCitySearchForm()
     context = {
         'title': 'Агенство Грант Гарант',

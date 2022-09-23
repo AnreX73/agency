@@ -78,7 +78,7 @@ class BalconyAdmin(admin.ModelAdmin):
 
 @admin.register(InCityObject)
 class InCityObjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'rooms', 'gethtmlPhoto', 'city_region', 'price', 'is_published')
+    list_display = ('id', 'title', 'rooms', 'gethtmlPhoto', 'city_region', 'price','object_type', 'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'rooms', 'city_region',)
     list_editable = ('is_published',)

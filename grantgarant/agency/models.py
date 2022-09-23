@@ -19,8 +19,6 @@ class InCityObjectType(models.Model):
     def get_absolute_url(self):
         return reverse('show_apartments', kwargs={'obj_type_slug': self.slug})
 
-        
-
     class Meta:
         verbose_name = 'Тип объекта'
         verbose_name_plural = 'Тип объекта'
@@ -135,12 +133,15 @@ class ObjectConstruction(models.Model):
 
 # объект городской недвижимости
 class InCityObject(models.Model):
+    SALE_OR_RENT = (
+        ('s', 'Продажа'),
+        ('r', 'Аренда')
+    )
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     slug = models.SlugField(unique=True, max_length=150, db_index=True, verbose_name='URL')
     price = models.CharField(max_length=255, verbose_name='Цена')
     image = models.ImageField(upload_to="images", blank=True, verbose_name='Основное изображение')
-    is_for_sale = models.BooleanField(default=True, verbose_name='Продажа')
-    is_for_rent = models.BooleanField(default=False, verbose_name='Аренда')
+    sale_or_rent = models.CharField(max_length=25, choices=SALE_OR_RENT, default='s',verbose_name='Продажа или аренда')
     is_hot = models.BooleanField(default=False, verbose_name='горячий вариант', help_text='если хотите видеть на '
                                                                                           'главной странице')
     object_type = models.ForeignKey(InCityObjectType, on_delete=models.PROTECT, verbose_name='тип объекта')

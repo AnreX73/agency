@@ -11,4 +11,4 @@ class InCitySearchForm(forms.ModelForm):
 
     class Meta:
         model = InCityObject
-        fields = ('is_for_sale', 'is_for_rent', 'object_type', 'city_region', 'rooms')
+        fields = ('sale_or_rent', 'object_type', 'city_region', 'rooms')
