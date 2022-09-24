@@ -4,13 +4,7 @@
 {% block content %}
 
 <div class="main-page-all-wrapper">
-    
-    <div class="main-page-slogan">{{main_page_slogan.note|safe}}</div>
-    <div class="main-page-img-wrapper">
-        <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">
-        <button class="custom-btn btn-5"><span>{{main_page_hot_button.note|safe}}</span></button>
-    </div>
-
+<div class="form-searched-wrapper">
     <h2>Поиск квартир</h2>
 <form action=" "class="search-form" method="POST" name="searched">
     {% csrf_token %}
@@ -22,15 +16,32 @@
     {% endfor %}
     <button class="submit" type="submit">Найти</button>
 </form>
-<div class="searching-wrapper">
-{% for o in obj_list %}
-<div class="searched-obj-wrapper">
-<div class="searched-obj">{{o.title}}</div>
-<img src="{{o.image.url}}" alt="{{o.title}}">
 
-</div>
+
+<div class="searched-wrapper">
+{% for o in obj_list %}
+<a href="{{o.get_absolute_url}}">
+    <div class="searched-obj-wrapper">
+        <div class="searched-obj">{{o.title}}</div>
+        <img src="{{o.image.url}}" alt="{{o.title}}">
+    </div>
+</a>
+{% empty %}
+<div class="non-searched"><h2>Нет объектов</h2></div>
 {% endfor%}
 </div>
+</div>
+
+ <div class="slogan-img-wrapper"> 
+    <div class="main-page-slogan">{{main_page_slogan.note|safe}}</div>
+    <div class="main-page-img-wrapper">
+        <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">  
+    </div>
+    <div class="btn-container">
+    <button class="custom-btn btn-5"><span>{{main_page_hot_button.note|safe}}</span></button>
+    </div>
+</div>  
+
 </div>
  
 

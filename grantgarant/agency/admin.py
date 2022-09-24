@@ -3,77 +3,77 @@ from django.utils.safestring import mark_safe
 
 from agency.models import *
 
-@admin.register(InCityObjectType)
-class InCityObjectTypeAdmin(admin.ModelAdmin):
-    list_display = ('id','gethtmlPhoto', 'title','slug')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    prepopulated_fields = {'slug': ('title',)}
-    save_on_top = True
+# @admin.register(InCityObjectType)
+# class InCityObjectTypeAdmin(admin.ModelAdmin):
+#     list_display = ('id','gethtmlPhoto', 'title','slug')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     prepopulated_fields = {'slug': ('title',)}
+#     save_on_top = True
 
-    def gethtmlPhoto(self, picture):
-        if picture.icon:
-            return mark_safe(f"<img src='{picture.icon.url}' width=50>")
+#     def gethtmlPhoto(self, picture):
+#         if picture.icon:
+#             return mark_safe(f"<img src='{picture.icon.url}' width=50>")
 
-    gethtmlPhoto.short_description = 'миниатюра'
-
-
-class InCityRegionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    prepopulated_fields = {'slug': ('title',)}
-    save_on_top = True
+#     gethtmlPhoto.short_description = 'миниатюра'
 
 
-class MetroStationAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    prepopulated_fields = {'slug': ('title',)}
-    save_on_top = True
-
-@admin.register(RoomAmount)
-class RoomAmountAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# class InCityRegionAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     prepopulated_fields = {'slug': ('title',)}
+#     save_on_top = True
 
 
-class BathroomTypeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# class MetroStationAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     prepopulated_fields = {'slug': ('title',)}
+#     save_on_top = True
+
+# @admin.register(RoomAmount)
+# class RoomAmountAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-class ElevatorTypeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# class BathroomTypeAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-class FlatStateAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# class ElevatorTypeAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-class ObjectConstructionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# class FlatStateAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
-@admin.register(Balcony)
-class BalconyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+
+# class ObjectConstructionAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
+
+# @admin.register(Balcony)
+# class BalconyAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
 @admin.register(InCityObject)
@@ -140,133 +140,133 @@ class GalleryAdmin(admin.ModelAdmin):
     gethtmlPhoto.short_description = 'миниатюра'
 
 
-@admin.register(OutCityObjectType)
-class OutCityObjectTypeAdmin(admin.ModelAdmin):
-    list_display = ('id','gethtmlPhoto', 'title','slug')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    prepopulated_fields = {'slug': ('title',)}
-    save_on_top = True
+# @admin.register(OutCityObjectType)
+# class OutCityObjectTypeAdmin(admin.ModelAdmin):
+#     list_display = ('id','gethtmlPhoto', 'title','slug')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     prepopulated_fields = {'slug': ('title',)}
+#     save_on_top = True
 
-    def gethtmlPhoto(self, picture):
-        if picture.icon:
-            return mark_safe(f"<img src='{picture.icon.url}' width=50>")
+#     def gethtmlPhoto(self, picture):
+#         if picture.icon:
+#             return mark_safe(f"<img src='{picture.icon.url}' width=50>")
             
-    gethtmlPhoto.short_description = 'миниатюра'
+#     gethtmlPhoto.short_description = 'миниатюра'
     
     
 #
 
-@admin.register(TypeOfOwnership)
-class TypeOfOwnershipAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(TypeOfOwnership)
+# class TypeOfOwnershipAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(Electricity)
-class ElectricityAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(Electricity)
+# class ElectricityAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(Water)
-class WaterAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(Water)
+# class WaterAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(Gas)
-class GasAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(Gas)
+# class GasAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(Bath)
-class BathAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(Bath)
+# class BathAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(Landings)
-class LandingsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(Landings)
+# class LandingsAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(Garage)
-class GarageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(Garage)
+# class GarageAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(Greenhouse)
-class GreenhouseAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(Greenhouse)
+# class GreenhouseAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(Security)
-class SecurityAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(Security)
+# class SecurityAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(GoodRoad)
-class GoodRoadAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(GoodRoad)
+# class GoodRoadAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(WinterAccess)
-class WinterAccessAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(WinterAccess)
+# class WinterAccessAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(ShopNearly)
-class ShopNearlyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(ShopNearly)
+# class ShopNearlyAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(WaterNearly)
-class WaterNearlyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(WaterNearly)
+# class WaterNearlyAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
-@admin.register(ForestNearly)
-class ForestNearlyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    save_on_top = True
+# @admin.register(ForestNearly)
+# class ForestNearlyAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title')
+#     list_display_links = ('id', 'title')
+#     search_fields = ('title',)
+#     save_on_top = True
 
 
 @admin.register(Graphics)
@@ -308,13 +308,13 @@ class ContactsAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(InCityRegion, InCityRegionAdmin)
-admin.site.register(MetroStation, MetroStationAdmin)
+# admin.site.register(InCityRegion, InCityRegionAdmin)
+# admin.site.register(MetroStation, MetroStationAdmin)
 # admin.site.register(RoomAmount, RoomAmountAdmin)
-admin.site.register(BathroomType, BathroomTypeAdmin)
-admin.site.register(ElevatorType, ElevatorTypeAdmin)
-admin.site.register(FlatState, FlatStateAdmin)
-admin.site.register(ObjectConstruction, ObjectConstructionAdmin)
+# admin.site.register(BathroomType, BathroomTypeAdmin)
+# admin.site.register(ElevatorType, ElevatorTypeAdmin)
+# admin.site.register(FlatState, FlatStateAdmin)
+# admin.site.register(ObjectConstruction, ObjectConstructionAdmin)
 
 
 admin.site.site_header = 'GRANT GARANT'
