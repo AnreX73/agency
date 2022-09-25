@@ -145,7 +145,7 @@ class InCityObject(models.Model):
     is_hot = models.BooleanField(default=False, verbose_name='горячий вариант', help_text='если хотите видеть на '
                                                                                           'главной странице')
     object_type = models.ForeignKey(InCityObjectType, on_delete=models.PROTECT, verbose_name='тип объекта',help_text='выберете тип объекта')
-    object_adress = models.CharField(max_length=255, blank=True, verbose_name='адрес объекта')
+    object_adress = models.CharField(max_length=255, blank=True, verbose_name='адрес объекта', help_text='необязательно')
     city_region = models.ForeignKey(InCityRegion, on_delete=models.PROTECT, verbose_name='район города')
     metro = models.ForeignKey(MetroStation, on_delete=models.PROTECT, verbose_name='станция метро')
     metro_distance = models.CharField(max_length=255, blank=True, verbose_name='расстояние до метро')
