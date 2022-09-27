@@ -131,7 +131,7 @@ td{
 .all_content_wrapper{
     margin: 0 auto;
     max-width: var(--content-size);
-    background:rgb(0, 128, 128, 0.03);
+    /* background:rgb(0, 128, 128, 0.03); */
     height: auto;
     padding: 30px;
     display: flex;
@@ -295,6 +295,7 @@ nav{
   padding: 15px;
   border-radius: 4px;
   margin: 10px;
+  background-color: #fff;
 }
 
 .search-form li {
@@ -310,21 +311,28 @@ nav{
   padding: 5px;
   margin: 5px;
   border-radius: 4px;
-  background: var(--light-teal);
+  border: 1px solid rgb(204, 238, 238); 
+  /* background: var(--light-teal); */
   width: 150px;
   font-size: 1.1rem;
   font-family: 'Oswald', sans-serif;
-  box-shadow:var(--complex-shadow);
+  /* box-shadow:var(--complex-shadow); */
 
 }
 
 .search-form button{
   padding: 2px 5px;
-  box-shadow: var(--complex-shadow);
   font-size: 1.1rem;
   min-width: 100px;
   border-radius: 4px;
   color: teal;
+  background: #fff;
+  border: 1px solid rgb(204, 238, 238);
+  margin-top: 10px;
+}
+
+.search-form button:hover{
+  box-shadow: var(--complex-shadow);
 }
 
 /*стили выдачи поска*/

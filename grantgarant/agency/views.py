@@ -11,6 +11,7 @@ def index(request):
         if form.is_valid():
             try:
                 obj_list = InCityObject.objects.filter(**form.cleaned_data)
+
             except:
                 form.add_error(None, 'ERROR')
 

@@ -269,19 +269,19 @@ class GalleryAdmin(admin.ModelAdmin):
 #     save_on_top = True
 
 
-@admin.register(Graphics)
-class GraphicsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'gethtmlPhoto', 'description', 'note', 'is_published')
-    list_display_links = ('id', 'description')
-    search_fields = ('description', 'note')
-    list_editable = ('is_published',)
-    save_on_top = True
+# @admin.register(Graphics)
+# class GraphicsAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'gethtmlPhoto', 'description', 'note', 'is_published')
+#     list_display_links = ('id', 'description')
+#     search_fields = ('description', 'note')
+#     list_editable = ('is_published',)
+#     save_on_top = True
 
-    def gethtmlPhoto(self, picture):
-        if picture.image:
-            return mark_safe(f"<img src='{picture.image.url}' width=50>")
+#     def gethtmlPhoto(self, picture):
+#         if picture.image:
+#             return mark_safe(f"<img src='{picture.image.url}' width=50>")
 
-    gethtmlPhoto.short_description = 'миниатюра'
+#     gethtmlPhoto.short_description = 'миниатюра'
 
 
 @admin.register(Post)

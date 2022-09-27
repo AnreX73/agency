@@ -5,9 +5,9 @@ from .models import InCityObject
 class InCitySearchForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['city_region'].initial = 2
-        self.fields['object_type'].initial = 2
-        self.fields['rooms'].initial = 2
+        self.fields['city_region'].empty_label = 'не выбрано'
+        self.fields['object_type'].empty_label = 'не выбрано'
+        self.fields['rooms'].empty_label = 'не выбрано'
 
     class Meta:
         model = InCityObject
