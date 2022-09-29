@@ -2,5 +2,31 @@
 {% load agency_tags %}
 
 {% block content %}
-<h1>Здесь будут результаты поиска</h1>
+<div class="form-searched-wrapper">
+    <h2>Поиск квартир</h2>
+<form action=" "class="search-form" method="POST" name="searched">
+    {% csrf_token %}
+    {% for f in form %}
+    <ul>
+        <li> <label for = "{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</li>
+        <li class="form-error">{{ f.errors }}</li>
+    </ul>
+    {% endfor %}
+    <button class="submit" type="submit">Найти</button>
+</form>
+
+
+<div class="searched-wrapper">
+{% for o in obj_list %}
+<a href="{{o.get_absolute_url}}">
+    <div class="searched-obj-wrapper">
+        <div class="searched-obj">{{o.title}}</div>
+        <img src="{{o.image.url}}" alt="{{o.title}}">
+    </div>
+</a>
+{% empty %}
+<div class="non-searched"><h2>Нет объектов</h2></div>
+{% endfor%}
+</div>
+</div>
 {% endblock content %}

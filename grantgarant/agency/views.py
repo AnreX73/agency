@@ -6,6 +6,19 @@ from agency.models import *
 
 
 def index(request):
+    hot_obj = InCityObject.objects.filter(is_hot=True)
+    
+    context = {
+        'title': 'Агенство Грант Гарант',
+        'main_page_img': Graphics.objects.get(description='изображение на главную'),
+        'main_page_slogan': Graphics.objects.get(description='Слоган'),
+        'main_page_hot_button': Graphics.objects.get(description='горячая кнопка на главной'),
+        'hot_obj': hot_obj,    
+    }
+    return render(request, 'agency/index.html', context=context)
+
+
+def searched_obj(request):
     if request.method == 'POST':
         form = InCitySearchForm(request.POST)
         if form.is_valid():
@@ -19,20 +32,9 @@ def index(request):
         obj_list = InCityObject.objects.all()
         form = InCitySearchForm()
     context = {
-        'title': 'Агенство Грант Гарант',
-        'main_page_img': Graphics.objects.get(description='изображение на главную'),
-        'main_page_slogan': Graphics.objects.get(description='Слоган'),
-        'main_page_hot_button': Graphics.objects.get(description='горячая кнопка на главной'),
+        'title': 'Агенство Грант Гарант - поиск',
         'form': form,
         'obj_list': obj_list
-
-    }
-    return render(request, 'agency/index.html', context=context)
-
-
-def searched_obj(request):
-    context = {
-        'title': 'Агенство Грант Гарант - поиск',
 
     }
     return render(request, 'agency/searched_obj.html', context=context)

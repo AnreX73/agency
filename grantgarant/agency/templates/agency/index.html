@@ -4,32 +4,14 @@
 {% block content %}
 
 <div class="main-page-all-wrapper">
-<div class="form-searched-wrapper">
-    <h2>Поиск квартир</h2>
-<form action=" "class="search-form" method="POST" name="searched">
-    {% csrf_token %}
-    {% for f in form %}
-    <ul>
-        <li> <label for = "{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</li> 
-        <li class="form-error">{{ f.errors }}</li>
-    </ul>
+<div class="hot-objects-wrapper">
+    <div class="hot-objects-list">
+    {% for obj in hot_obj %}
+    <div class="hot-objects">{{obj.title}}</div>
     {% endfor %}
-    <button class="submit" type="submit">Найти</button>
-</form>
+    
+</div>   
 
-
-<div class="searched-wrapper">
-{% for o in obj_list %}
-<a href="{{o.get_absolute_url}}">
-    <div class="searched-obj-wrapper">
-        <div class="searched-obj">{{o.title}}</div>
-        <img src="{{o.image.url}}" alt="{{o.title}}">
-    </div>
-</a>
-{% empty %}
-<div class="non-searched"><h2>Нет объектов</h2></div>
-{% endfor%}
-</div>
 </div>
 
  <div class="slogan-img-wrapper"> 
