@@ -6,11 +6,24 @@
 <div class="main-page-all-wrapper">
 <div class="hot-objects-wrapper">
     <div class="hot-objects-list">
-    {% for obj in hot_obj %}
-    <div class="hot-objects">{{obj.title}}</div>
+    {% for obj in hot_city_obj %}
+    <div class="hot-object-wrapper">
+        <a href="{{obj.get_absolute_url}}">
+        <div class="hot-object">
+        <img style="max-width: 100px;" src="{{obj.image.url}}" alt="{{obj.title}}">
+        {{obj.title}} 
+        </div>
+    </a>
+    <a href="">show more</a>
+    </div>
+    {% endfor %}
+    {% for obj in hot_out_city_obj %}
+    <div class="hot-object-wrapper">
+        {{obj.title}}
+    </div>
     {% endfor %}
     
-</div>   
+    </div>   
 
 </div>
 
@@ -20,7 +33,7 @@
         <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">  
     </div>
     <div class="btn-container">
-    <button class="custom-btn btn-5"><span>{{main_page_hot_button.note|safe}}</span></button>
+    
     </div>
 </div>  
 

@@ -6,14 +6,13 @@ from agency.models import *
 
 
 def index(request):
-    hot_obj = InCityObject.objects.filter(is_hot=True)
     
     context = {
         'title': 'Агенство Грант Гарант',
         'main_page_img': Graphics.objects.get(description='изображение на главную'),
         'main_page_slogan': Graphics.objects.get(description='Слоган'),
-        'main_page_hot_button': Graphics.objects.get(description='горячая кнопка на главной'),
-        'hot_obj': hot_obj,    
+        'hot_city_obj': InCityObject.objects.filter(is_hot=True).order_by('-time_create')[:3],    
+        'hot_out_city_obj': OutCityObject.objects.filter(is_hot=True).order_by('-time_create')[:2],    
     }
     return render(request, 'agency/index.html', context=context)
 
