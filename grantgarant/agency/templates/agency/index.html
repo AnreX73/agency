@@ -5,16 +5,28 @@
 
 <div class="main-page-all-wrapper">
 <div class="hot-objects-wrapper">
+    <h2>Горячие предложения</h2>
     <div class="hot-objects-list">
     {% for obj in hot_city_obj %}
     <div class="hot-object-wrapper">
         <a href="{{obj.get_absolute_url}}">
         <div class="hot-object">
-        <img style="max-width: 100px;" src="{{obj.image.url}}" alt="{{obj.title}}">
-        {{obj.title}} 
+        <img style="max-width: 150px;" src="{{obj.image.url}}" alt="{{obj.title}}">
+        <div class="hot-info">
+        <p>{{obj.title}} </p>
+        <p>район {{obj.city_region}} </p>
+        <p>{{obj.rooms}} </p>
+        <p>{{obj.square}} кв.м </p>
+        </div>
+        
+        
         </div>
     </a>
-    <a href="">show more</a>
+    {% for type in hot_city_obj_type %}
+    {% if type.title != obj.object_type %}
+    <a class="hot-more-link" href="{{type.get_absolute_url}}"> <p class="hot-more-link">еще {{type.title}} ></p></a>
+    {% endif %}
+   {% endfor %}
     </div>
     {% endfor %}
     {% for obj in hot_out_city_obj %}

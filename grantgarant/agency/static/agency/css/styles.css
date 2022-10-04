@@ -293,6 +293,16 @@ nav{
   grid-template-columns: repeat(2,1fr);
   gap: 15px;
   border: 1px solid rgb(212, 211, 211);
+  align-items: center;
+}
+.hot-info{
+  text-align:left;
+  line-height: 1.2rem;
+}
+.hot-more-link{
+  margin-bottom: 5px;
+  align-self: flex-end;
+  color: teal;
 }
 /*оболочка поиска*/
 .searched-wrapper{

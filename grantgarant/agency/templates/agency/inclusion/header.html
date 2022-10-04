@@ -20,14 +20,14 @@
         <li><a href="">Продажа</a>
          <ul>
             {% for incity in in_city_object_type %}
-            {% if  incity.in_main_page %}
+            
             <li data-link ='{{incity.slug}}' ><a href="{{incity.get_absolute_url}}">{{incity.title}}</a></li>
-            {% endif %}
+            
             {% endfor %}
             {% for incity in out_city_object_type %}
-            {% if  incity.in_main_page %}
+            
             <li data-link ='{{incity.slug}}'><a href="{{incity.get_absolute_url}}">{{incity.title}}</a></li>
-            {% endif %}
+            
             {% endfor %} 
           </ul>
 

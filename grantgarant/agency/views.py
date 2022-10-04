@@ -13,6 +13,9 @@ def index(request):
         'main_page_slogan': Graphics.objects.get(description='Слоган'),
         'hot_city_obj': InCityObject.objects.filter(is_hot=True).order_by('-time_create')[:3],    
         'hot_out_city_obj': OutCityObject.objects.filter(is_hot=True).order_by('-time_create')[:2],    
+        'hot_city_obj_type': InCityObjectType.objects.all(),    
+        'hot_out_city_obj_type': OutCityObjectType.objects.all(),    
+            
     }
     return render(request, 'agency/index.html', context=context)
 
