@@ -15,7 +15,10 @@
     <span class="apartment-logo-title"><h2>{{unsel.title}}</h2></span>
 
 </div></a>
+
 {% endfor%}
+<a class="search-link" href='{% url "searched_obj" %}'>Подробный поиск > </a>
+
 </div>
 <div  class="apartments-container">  
     {% show_apa obj_type=apartments_type.slug %}

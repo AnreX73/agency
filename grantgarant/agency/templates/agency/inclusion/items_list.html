@@ -14,7 +14,7 @@
                 <img src="{{ap.image.url}}" alt="{{ap.title}}">
             </div>
             <div class="apartment-info-wrapper">
-                {%if incity_id.title == 'Квартиры' or incity_id.title == 'Комнаты' %}
+                {%if incity_id.title == 'Квартиры' or incity_id.title == 'Комнаты'  or incity_id.title == 'Дома' %}
                 <div class="apartment-info">район {{ap.city_region}}</div>
                 <div class="apartment-info">{{ap.object_adress}}</div>
                 <div class="apartment-info">{{ap.rooms}}</div>
@@ -29,7 +29,7 @@
                 <div class="apartment-info">Срок сдачи {{ap.year}} г.</div>
                 {%endif%}
 
-                {%if incity_id.title == 'Дачи' or incity_id.title == 'Коттеджи' or  incity_id.title == 'Земельные участки' or incity_id.title == 'Дома'%}
+                {%if incity_id.title == 'Дачи' or incity_id.title == 'Коттеджи' or  incity_id.title == 'Земельные участки' or incity_id.title == 'Загородные дома' %}
                 <div class="apartment-info">{{ap.object_adress}}</div>
                 <div class="apartment-info">от города {{ap.city_distance}}</div>
                 <div class="apartment-info">участок {{ap.land_square}}</div>

@@ -5,7 +5,7 @@
 
 <div class="main-page-all-wrapper">
 <div class="hot-objects-wrapper">
-    <h2>Горячие предложения</h2>
+    <h2 class="hot-title">{{hot_title.note|safe}}</h2>
     <div class="hot-objects-list">
     {% for obj in hot_city_obj %}
     <div class="hot-object-wrapper">
@@ -15,23 +15,42 @@
         <div class="hot-info">
         <p>{{obj.title}} </p>
         <p>район {{obj.city_region}} </p>
+        <p>{{obj.object_adress}} </p>
         <p>{{obj.rooms}} </p>
         <p>{{obj.square}} кв.м </p>
+        <div class="hot-price-container">{{obj.price}} </div>
         </div>
-        
-        
         </div>
     </a>
-    {% for type in hot_city_obj_type %}
-    {% if type.title != obj.object_type %}
-    <a class="hot-more-link" href="{{type.get_absolute_url}}"> <p class="hot-more-link">еще {{type.title}} ></p></a>
-    {% endif %}
-   {% endfor %}
+        {% for type in hot_city_obj_type %}
+            {% if type.title|stringformat:"s" == obj.object_type|stringformat:"s" %}
+                <a class="hot-more-link" href="{{type.get_absolute_url}}"> <p class="hot-more-link">все {{type.title}} ></p></a>
+            {% endif %}
+        {% endfor %}
     </div>
     {% endfor %}
+
+
+
     {% for obj in hot_out_city_obj %}
     <div class="hot-object-wrapper">
-        {{obj.title}}
+        <a href="{{obj.get_absolute_url}}">
+        <div class="hot-object">
+        <img style="max-width: 150px;" src="{{obj.image.url}}" alt="{{obj.title}}">
+        <div class="hot-info">
+        <p>{{obj.title}} </p>
+        <p>{{obj.object_adress}} </p>
+        <p>до города {{obj.city_distance}} </p>
+        <p>участок {{obj.land_square}}</p>
+        <div class="hot-price-container">{{obj.price}} </div>
+        </div>
+        </div>
+    </a>
+        {% for type in hot_out_city_obj_type %}
+            {% if type.title|stringformat:"s" == obj.object_type|stringformat:"s" %}
+                <a class="hot-more-link" href="{{type.get_absolute_url}}"> <p class="hot-more-link">все {{type.title}} ></p></a>
+            {% endif %}
+        {% endfor %}
     </div>
     {% endfor %}
     
@@ -44,9 +63,7 @@
     <div class="main-page-img-wrapper">
         <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">  
     </div>
-    <div class="btn-container">
     
-    </div>
 </div>  
 
 </div>

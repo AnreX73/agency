@@ -14,7 +14,8 @@ def index(request):
         'hot_city_obj': InCityObject.objects.filter(is_hot=True).order_by('-time_create')[:3],    
         'hot_out_city_obj': OutCityObject.objects.filter(is_hot=True).order_by('-time_create')[:2],    
         'hot_city_obj_type': InCityObjectType.objects.all(),    
-        'hot_out_city_obj_type': OutCityObjectType.objects.all(),    
+        'hot_out_city_obj_type': OutCityObjectType.objects.all(), 
+        'hot_title': Graphics.objects.get(description='горячая кнопка на главной')
             
     }
     return render(request, 'agency/index.html', context=context)
@@ -69,7 +70,8 @@ def show_apartment(request, apartment_slug):
     apartment_id = apartment.id
     context = {
         'apartment': apartment,
-        'gallery': Gallery.objects.filter(galleryLink_id=apartment_id)
+        'gallery': Gallery.objects.filter(galleryLink_id=apartment_id),
+        'no_photo': Graphics.objects.get(description='нет фото')
     }
     return render(request, 'agency/apartment.html', context=context)
 
@@ -79,7 +81,8 @@ def show_dacha(request, dacha_slug):
     dacha_id = dacha.id
     context = {
         'dacha': dacha,
-        'gallery': Gallery2.objects.filter(galleryLink2_id=dacha_id)
+        'gallery': Gallery2.objects.filter(galleryLink2_id=dacha_id),
+        'no_photo': Graphics.objects.get(description='нет фото')
 
     }
     return render(request, 'agency/dacha.html', context=context)
