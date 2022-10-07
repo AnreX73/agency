@@ -10,9 +10,13 @@
                 {%if ap.is_hot %}
                 <div class="hot">Hot</div>
                 {%endif%}
+                {% if ap.image %}
             <div class="img-container">
                 <img src="{{ap.image.url}}" alt="{{ap.title}}">
             </div>
+            {% else %}
+            <img  style="max-width: 230px;" src="{{no_photo.image.url}}" alt="{{no_photo.description}}">
+            {% endif %}
             <div class="apartment-info-wrapper">
                 {%if incity_id.title == 'Квартиры' or incity_id.title == 'Комнаты'  or incity_id.title == 'Дома' %}
                 <div class="apartment-info">район {{ap.city_region}}</div>

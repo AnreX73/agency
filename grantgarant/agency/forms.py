@@ -1,5 +1,5 @@
 from django import forms
-from .models import InCityObject
+from .models import InCityObject, OutCityObject
 
 
 class InCitySearchForm(forms.ModelForm):
@@ -12,3 +12,5 @@ class InCitySearchForm(forms.ModelForm):
     class Meta:
         model = InCityObject
         fields = ('sale_or_rent', 'object_type', 'city_region', 'rooms')
+
+

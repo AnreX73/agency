@@ -15,7 +15,8 @@ def index(request):
         'hot_out_city_obj': OutCityObject.objects.filter(is_hot=True).order_by('-time_create')[:2],    
         'hot_city_obj_type': InCityObjectType.objects.all(),    
         'hot_out_city_obj_type': OutCityObjectType.objects.all(), 
-        'hot_title': Graphics.objects.get(description='горячая кнопка на главной')
+        'hot_title': Graphics.objects.get(description='горячая кнопка на главной'),
+        'no_photo': Graphics.objects.get(description='нет фото')
             
     }
     return render(request, 'agency/index.html', context=context)
@@ -37,7 +38,8 @@ def searched_obj(request):
     context = {
         'title': 'Агенство Грант Гарант - поиск',
         'form': form,
-        'obj_list': obj_list
+        'obj_list': obj_list,
+        'no_photo': Graphics.objects.get(description='нет фото')
 
     }
     return render(request, 'agency/searched_obj.html', context=context)

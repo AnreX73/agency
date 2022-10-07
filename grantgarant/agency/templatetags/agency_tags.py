@@ -33,5 +33,6 @@ def show_apa(obj_list_type='city', obj_type='vtorichnoe-zhile'):
         incity_id = OutCityObjectType.objects.get(slug=obj_type)
     return {
         'selected_items': selected_items,
-        'incity_id': incity_id
+        'incity_id': incity_id,
+        'no_photo': Graphics.objects.get(description='нет фото')
     }
