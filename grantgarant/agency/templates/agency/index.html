@@ -40,7 +40,11 @@
     <div class="hot-object-wrapper">
         <a href="{{obj.get_absolute_url}}">
         <div class="hot-object">
+          {% if obj.image %}
         <img style="max-width: 150px;" src="{{obj.image.url}}" alt="{{obj.title}}">
+        {% else %}
+        <img  style="max-width: 150px;" src="{{no_photo.image.url}}" alt="{{no_photo.description}}">
+        {% endif %}
         <div class="hot-info">
         <p>{{obj.title}} </p>
         <p>{{obj.object_adress}} </p>

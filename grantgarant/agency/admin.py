@@ -3,19 +3,20 @@ from django.utils.safestring import mark_safe
 
 from agency.models import *
 
-# @admin.register(InCityObjectType)
-# class InCityObjectTypeAdmin(admin.ModelAdmin):
-#     list_display = ('id','gethtmlPhoto', 'title','slug')
-#     list_display_links = ('id', 'title')
-#     search_fields = ('title',)
-#     prepopulated_fields = {'slug': ('title',)}
-#     save_on_top = True
 
-#     def gethtmlPhoto(self, picture):
-#         if picture.icon:
-#             return mark_safe(f"<img src='{picture.icon.url}' width=50>")
+@admin.register(InCityObjectType)
+class InCityObjectTypeAdmin(admin.ModelAdmin):
+    list_display = ('id','gethtmlPhoto', 'title','slug')
+    list_display_links = ('id', 'title')
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
+    save_on_top = True
 
-#     gethtmlPhoto.short_description = 'миниатюра'
+    def gethtmlPhoto(self, picture):
+        if picture.icon:
+            return mark_safe(f"<img src='{picture.icon.url}' width=50>")
+
+    gethtmlPhoto.short_description = 'миниатюра'
 
 
 # class InCityRegionAdmin(admin.ModelAdmin):
@@ -33,12 +34,12 @@ from agency.models import *
 #     prepopulated_fields = {'slug': ('title',)}
 #     save_on_top = True
 
-# @admin.register(RoomAmount)
-# class RoomAmountAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'title')
-#     list_display_links = ('id', 'title')
-#     search_fields = ('title',)
-#     save_on_top = True
+@admin.register(RoomAmount)
+class RoomAmountAdmin(admin.ModelAdmin):
+    list_display = ('id', 'room_amount', 'title')
+    list_display_links = ('id', 'title')
+    search_fields = ('title',)
+    save_on_top = True
 
 
 # class BathroomTypeAdmin(admin.ModelAdmin):
@@ -74,11 +75,21 @@ from agency.models import *
 #     list_display_links = ('id', 'title')
 #     search_fields = ('title',)
 #     save_on_top = True
+class GalleryAdmin(admin.TabularInline):
+    model = Gallery
+    fields = ('gallery_image', 'gethtmlPhoto', 'note', 'is_published')
+    readonly_fields = ('gethtmlPhoto',)
+
+    def gethtmlPhoto(self, picture):
+        if picture.gallery_image:
+            return mark_safe(f"<img src='{picture.gallery_image.url}' width=75>")
+
+    gethtmlPhoto.short_description = 'миниатюра'
 
 
-@admin.register(InCityObject)
 class InCityObjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'rooms', 'gethtmlPhoto', 'city_region', 'price','object_type', 'is_published')
+    inlines = [GalleryAdmin]
+    list_display = ('id', 'title', 'rooms', 'gethtmlPhoto', 'city_region', 'price', 'object_type', 'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'rooms', 'city_region',)
     list_editable = ('is_published',)
@@ -93,10 +104,22 @@ class InCityObjectAdmin(admin.ModelAdmin):
     gethtmlPhoto.short_description = 'миниатюра'
 
 
-@admin.register(OutCityObject)
+class GalleryAdmin2(admin.TabularInline):
+    model = Gallery2
+    fields = ('gallery_image2', 'gethtmlPhoto', 'note2', 'is_published')
+    readonly_fields = ('gethtmlPhoto',)
+
+    def gethtmlPhoto(self, picture):
+        if picture.gallery_image2:
+            return mark_safe(f"<img src='{picture.gallery_image2.url}' width=75>")
+
+    gethtmlPhoto.short_description = 'миниатюра'
+
+
 class OutCityObjectAdmin(admin.ModelAdmin):
+    inlines = [GalleryAdmin2]
     list_display = (
-        'id', 'title',  'gethtmlPhoto', 'object_adress', 'land_square', 'price', 'is_published')
+        'id', 'title', 'gethtmlPhoto', 'object_adress', 'land_square', 'price', 'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'land_square',)
     list_editable = ('is_published',)
@@ -111,50 +134,21 @@ class OutCityObjectAdmin(admin.ModelAdmin):
     gethtmlPhoto.short_description = 'миниатюра'
 
 
-@admin.register(Gallery)
-class GalleryAdmin(admin.ModelAdmin):
-    list_display = ('galleryLink', 'gethtmlPhoto', 'note',)
-    list_display_links = ('galleryLink', 'note')
-    search_fields = ('galleryLink',)
+@admin.register(OutCityObjectType)
+class OutCityObjectTypeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'gethtmlPhoto', 'title', 'slug')
+    list_display_links = ('id', 'title')
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
     save_on_top = True
 
     def gethtmlPhoto(self, picture):
-        if picture.gallery_image:
-            return mark_safe(f"<img src='{picture.gallery_image.url}' width=50>")
+        if picture.icon:
+            return mark_safe(f"<img src='{picture.icon.url}' width=50>")
 
     gethtmlPhoto.short_description = 'миниатюра'
 
 
-
-@admin.register(Gallery2)
-class GalleryAdmin(admin.ModelAdmin):
-    list_display = ('galleryLink2', 'gethtmlPhoto', 'note2',)
-    list_display_links = ('galleryLink2', 'note2')
-    search_fields = ('galleryLink2',)
-    save_on_top = True
-
-    def gethtmlPhoto(self, picture):
-        if picture.gallery_image2:
-            return mark_safe(f"<img src='{picture.gallery_image2.url}' width=50>")
-
-    gethtmlPhoto.short_description = 'миниатюра'
-
-
-# @admin.register(OutCityObjectType)
-# class OutCityObjectTypeAdmin(admin.ModelAdmin):
-#     list_display = ('id','gethtmlPhoto', 'title','slug')
-#     list_display_links = ('id', 'title')
-#     search_fields = ('title',)
-#     prepopulated_fields = {'slug': ('title',)}
-#     save_on_top = True
-
-#     def gethtmlPhoto(self, picture):
-#         if picture.icon:
-#             return mark_safe(f"<img src='{picture.icon.url}' width=50>")
-            
-#     gethtmlPhoto.short_description = 'миниатюра'
-    
-    
 #
 
 # @admin.register(TypeOfOwnership)
@@ -307,8 +301,8 @@ class ContactsAdmin(admin.ModelAdmin):
     gethtmlPhoto.short_description = 'миниатюра'
 
 
-
-# admin.site.register(InCityRegion, InCityRegionAdmin)
+admin.site.register(InCityObject, InCityObjectAdmin)
+admin.site.register(OutCityObject, OutCityObjectAdmin)
 # admin.site.register(MetroStation, MetroStationAdmin)
 # admin.site.register(RoomAmount, RoomAmountAdmin)
 # admin.site.register(BathroomType, BathroomTypeAdmin)

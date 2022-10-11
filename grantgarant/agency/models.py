@@ -55,7 +55,8 @@ class MetroStation(models.Model):
 
 # Количество комнат
 class RoomAmount(models.Model):
-    title = models.CharField(max_length=25, verbose_name='Количество комнат')
+    room_amount = models.PositiveIntegerField(unique=True, default=1, verbose_name='Кол-во комнат цифрами')
+    title = models.CharField(max_length=25, verbose_name='Количество комнат словами')
 
     def __str__(self):
         return self.title
@@ -141,21 +142,24 @@ class InCityObject(models.Model):
     slug = models.SlugField(unique=True, max_length=150, db_index=True, verbose_name='URL')
     price = models.CharField(max_length=255, verbose_name='Цена')
     image = models.ImageField(upload_to="images", blank=True, verbose_name='Основное изображение')
-    sale_or_rent = models.CharField(max_length=25, choices=SALE_OR_RENT, default='s',verbose_name='Продажа или аренда')
+    sale_or_rent = models.CharField(max_length=25, choices=SALE_OR_RENT, default='s', verbose_name='Продажа или аренда')
     is_hot = models.BooleanField(default=False, verbose_name='горячий вариант', help_text='если хотите видеть на '
                                                                                           'главной странице')
-    object_type = models.ForeignKey(InCityObjectType, on_delete=models.PROTECT, verbose_name='тип объекта',help_text='выберете тип объекта')
-    object_adress = models.CharField(max_length=255, blank=True, verbose_name='адрес объекта', help_text='необязательно')
+    object_type = models.ForeignKey(InCityObjectType, on_delete=models.PROTECT, verbose_name='тип объекта',
+                                    help_text='выберете тип объекта')
+    object_adress = models.CharField(max_length=255, blank=True, verbose_name='адрес объекта',
+                                     help_text='необязательно')
     city_region = models.ForeignKey(InCityRegion, on_delete=models.PROTECT, verbose_name='район города')
     metro = models.ForeignKey(MetroStation, on_delete=models.PROTECT, verbose_name='станция метро')
     metro_distance = models.CharField(max_length=255, blank=True, verbose_name='расстояние до метро')
     rooms = models.ForeignKey(RoomAmount, on_delete=models.PROTECT, verbose_name='количество комнат')
-    square = models.CharField(max_length=255, blank=True, verbose_name='общая площадь')
-    live_square = models.CharField(max_length=255, blank=True, verbose_name='жилая площадь')
-    kitchen = models.CharField(max_length=255, blank=True, verbose_name='площадь кухни')
+    square = models.PositiveIntegerField(blank=True, verbose_name='общая площадь кв.м')
+    live_square = models.PositiveIntegerField(blank=True, verbose_name='жилая площадь')
+    kitchen = models.PositiveIntegerField(blank=True, verbose_name='площадь кухни')
     rooms_layout = models.CharField(max_length=255, blank=True, verbose_name='планировка')
     balcony = models.ForeignKey(Balcony, default=2, on_delete=models.PROTECT, verbose_name='балкон')
-    floor = models.CharField(max_length=25, blank=True, verbose_name='Этаж')
+    floor = models.PositiveIntegerField(blank=True, default=1, verbose_name='Этаж')
+    all_floor = models.PositiveIntegerField(blank=True, null=True, verbose_name='Этажность дома')
     bathroom = models.ForeignKey(BathroomType, on_delete=models.PROTECT, verbose_name='санузел')
     elevator = models.ForeignKey(ElevatorType, on_delete=models.PROTECT, verbose_name='лифт')
     state = models.ForeignKey(FlatState, on_delete=models.PROTECT, verbose_name='состояние')
@@ -385,15 +389,14 @@ class OutCityObject(models.Model):
     slug = models.SlugField(unique=True, max_length=150, db_index=True, verbose_name='URL')
     price = models.CharField(max_length=255, verbose_name='Цена')
     image = models.ImageField(upload_to="images", blank=True, verbose_name='Основное изображение')
-    is_for_sale = models.BooleanField(default=True, verbose_name='Продажа')
-    is_for_rent = models.BooleanField(default=False, verbose_name='Аренда')
     is_hot = models.BooleanField(default=False, verbose_name='горячий вариант')
     object_type = models.ForeignKey(OutCityObjectType, on_delete=models.PROTECT, verbose_name='тип объекта')
     object_adress = models.CharField(max_length=255, blank=True, verbose_name='адрес объекта')
     city_distance = models.CharField(max_length=255, blank=True, verbose_name='расстояние до города')
-    land_square = models.CharField(max_length=255, blank=True, verbose_name='площадь участка')
+    land_square = models.DecimalField(blank=True, max_digits=4, decimal_places=2, verbose_name='площадь участка',
+                                      help_text='в сотках, 2 знака после запятой')
     type_of_ownership = models.ForeignKey(TypeOfOwnership, on_delete=models.PROTECT, verbose_name='форма собственности')
-    square = models.CharField(max_length=255, blank=True, verbose_name='площадь дома')
+    square = models.PositiveIntegerField(blank=True, verbose_name='площадь дома', help_text='в кв.м')
     year = models.CharField(max_length=25, blank=True, verbose_name='год постройки')
     construction = models.ForeignKey(ObjectConstruction, on_delete=models.PROTECT, verbose_name='тип постройки')
     state = models.ForeignKey(FlatState, on_delete=models.PROTECT, verbose_name='состояние')
@@ -470,7 +473,7 @@ class Gallery(models.Model):
         return self.note
 
     class Meta:
-        verbose_name = 'фото объекта'
+        verbose_name = 'фотографию объекта'
         verbose_name_plural = 'фото объекта'
         ordering = ['galleryLink']
 
