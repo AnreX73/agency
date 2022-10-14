@@ -4,6 +4,14 @@
 {% block content %}
 
 <div class="main-page-all-wrapper">
+
+<div class="slogan-img-wrapper"> 
+    <div class="main-page-slogan">{{main_page_slogan.note|safe}}</div>
+    <div class="main-page-img-wrapper">
+        <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">  
+    </div>
+        
+</div>  
 <div class="hot-objects-wrapper">
     <h2 class="hot-title">{{hot_title.note|safe}}</h2>
     <div class="hot-objects-list">
@@ -66,13 +74,7 @@
 
 </div>
 
- <div class="slogan-img-wrapper"> 
-    <div class="main-page-slogan">{{main_page_slogan.note|safe}}</div>
-    <div class="main-page-img-wrapper">
-        <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">  
-    </div>
-    
-</div>  
+
 
 </div>
  

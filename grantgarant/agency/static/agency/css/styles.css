@@ -133,7 +133,6 @@ td{
     max-width: var(--content-size);
     /* background:rgb(0, 128, 128, 0.03); */
     height: auto;
-    padding: 30px;
     display: flex;
     flex-direction: column;    
 }
@@ -146,6 +145,7 @@ header{
   grid-template-columns: repeat(12,1fr);
   gap: 20px;
   width: 100%;
+  height: var(--header-height);
   max-width: var(--content-size);
   text-align: center;
   left: 50%;
@@ -273,24 +273,77 @@ nav{
 
 /*оболочка главной страницы*/
 .main-page-all-wrapper{
-  display:grid;
-  grid-template-columns: 3fr 5fr;
-  gap:15px;
+  display: flex;
+  flex-direction: column;
   width:100%;
   height: 100vh;
   justify-items: center;
   text-align: center;
 }
 
+.slogan-img-wrapper{
+  position: relative;
+  height: min-content; 
+}
+/*стили для слогана*/
+.main-page-slogan{
+  position:absolute;
+  right:5%;
+  top:10px;
+  font-size:48px;
+  color: teal;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  z-index: 5;
+  text-shadow:-0   -2px 0   #FFFFFF,
+  0   -2px 0   #FFFFFF,
+ -0    2px 0   #FFFFFF,
+  0    2px 0   #FFFFFF,
+ -2px -0   0   #FFFFFF,
+  2px -0   0   #FFFFFF,
+ -2px  0   0   #FFFFFF,
+  2px  0   0   #FFFFFF,
+ -1px -2px 0   #FFFFFF,
+  1px -2px 0   #FFFFFF,
+ -1px  2px 0   #FFFFFF,
+  1px  2px 0   #FFFFFF,
+ -2px -1px 0   #FFFFFF,
+  2px -1px 0   #FFFFFF,
+ -2px  1px 0   #FFFFFF,
+  2px  1px 0   #FFFFFF,
+ -2px -2px 0   #FFFFFF,
+  2px -2px 0   #FFFFFF,
+ -2px  2px 0   #FFFFFF,
+  2px  2px 0   #FFFFFF,
+ -2px -2px 0   #FFFFFF,
+  2px -2px 0   #FFFFFF,
+ -2px  2px 0   #FFFFFF,
+  2px  2px 0   #FFFFFF;
+}
+/*стили для картинки на главной*/
+.main-page-img-wrapper{ 
+  width:100%; 
+}
+.main-page-img-wrapper img{ 
+  width:100%;
+}
+
 /*hot объекты на главной*/
-.hot-object-wrapper{
-  display: flex;
-  flex-direction: column;
+.hot-objects-wrapper{
+  margin-top:1rem;
+}
+.hot-objects-list{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+  justify-items: center;
 }
 .hot-title{
   color: var(--wild-text);
 }
 .hot-object{
+  min-height: 140px;
+  min-width: 360px;
   position: relative;
   border-radius: 4px;
   margin-top: 10px;
@@ -323,115 +376,8 @@ nav{
 }
 
 
-.slogan-img-wrapper{
-  position: relative; 
-}
-/*стили для слогана*/
-.main-page-slogan{
-  position:absolute;
-  left:0;
-  top:50px;
-  font-size:48px;
-  color: teal;
-  font-family: 'Caveat', cursive;
-  font-weight: 600;
-  z-index: 5;
-  text-shadow:-0   -2px 0   #FFFFFF,
-  0   -2px 0   #FFFFFF,
- -0    2px 0   #FFFFFF,
-  0    2px 0   #FFFFFF,
- -2px -0   0   #FFFFFF,
-  2px -0   0   #FFFFFF,
- -2px  0   0   #FFFFFF,
-  2px  0   0   #FFFFFF,
- -1px -2px 0   #FFFFFF,
-  1px -2px 0   #FFFFFF,
- -1px  2px 0   #FFFFFF,
-  1px  2px 0   #FFFFFF,
- -2px -1px 0   #FFFFFF,
-  2px -1px 0   #FFFFFF,
- -2px  1px 0   #FFFFFF,
-  2px  1px 0   #FFFFFF,
- -2px -2px 0   #FFFFFF,
-  2px -2px 0   #FFFFFF,
- -2px  2px 0   #FFFFFF,
-  2px  2px 0   #FFFFFF,
- -2px -2px 0   #FFFFFF,
-  2px -2px 0   #FFFFFF,
- -2px  2px 0   #FFFFFF,
-  2px  2px 0   #FFFFFF;
-}
-/*стили для картинки на главной*/
-.main-page-img-wrapper{
-  margin-top: 50px;
-  width:550px;
-  height:550px;
-  border-radius:50%; 
- 
-}
-.main-page-img-wrapper img{
-  border-radius:50%;
-  object-fit:cover;
-  width:100%;
-  height: 100%;
-  box-shadow:var(--complex-shadow);
-}
 
-/*кнопка hot*/
-.btn-container{
-  position:absolute;
-  top:300px;
-  left:-35px;
-}
-.custom-btn {
-  color: #fff;
-  border-radius: 5px;
-  padding:  25px;
-  font-size: 1.4rem;
-  font-weight: 700;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative; 
-   box-shadow:var(--complex-shadow);
-  border-radius:50%;
-}
-.btn-5 {
 
-  width: 125px;
-  height:125px;
-  padding: 0;
-  border: none;
-background: var(--wild-text);
-}
-.btn-5:hover {
-  color: var(--wild-text);
-  background:white;
-  box-shadow:none;
-}
-.btn-5:before,
-.btn-5:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: var(--wild-text);
-  box-shadow:var(--complex-shadow);
-  transition:400ms ease all;
-}
-.btn-5:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-.btn-5:hover:before,
-.btn-5:hover:after{
-  width:100%;
-  transition:800ms ease-in-out all;
-}
 
 /*список квартир*/
 .apartments-links-wrapper{
@@ -518,7 +464,7 @@ border-radius:4px;
 object-fit: contain;
 }
 .price-container{
-background:var(--wild-text);
+background:teal;
 color:white;
 padding:10px;
 position:absolute;
