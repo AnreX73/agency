@@ -342,6 +342,7 @@ nav{
   color: var(--wild-text);
 }
 .hot-object{
+ 
   min-height: 140px;
   min-width: 360px;
   position: relative;
@@ -353,6 +354,11 @@ nav{
   gap: 15px;
   border: 1px solid rgb(212, 211, 211);
   align-items: center;
+}
+.hot-object:hover{
+  box-shadow:var(--complex-shadow);
+  background-color: var(--light-teal);
+  transition: 300ms ease-in-out all;
 }
 .hot-price-container{
   background:var(--wild-text);
@@ -366,13 +372,17 @@ nav{
   }
 .hot-info{
   text-align:left;
-  line-height: 1.2rem;
+  line-height: 1.3rem;
 }
 .hot-more-link{
   margin-bottom: 6px;
-  margin-top: 2px;
+  margin-top: 10px;
   align-self: flex-end;
   color: teal;
+}
+.hot-more-link:hover{
+  color: var(--wild-text);
+  transition: 300ms ease-in-out all;
 }
 
 
@@ -437,12 +447,14 @@ align-items: center;
 .apartment-container{
   border-radius:4px;
   border:1px solid rgb(0, 0, 0, 0.2);
-  box-shadow:var(--complex-shadow);
+  
   padding:15px;
   
 }
 .apartment-container:hover{
+  box-shadow:var(--complex-shadow);
   background: var(--light-teal);
+  transition: 300ms ease-in-out all;
 }
 
 /*главное фото объкта и цена в списке объектов*/
