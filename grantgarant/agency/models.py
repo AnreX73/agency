@@ -1,4 +1,5 @@
 from distutils.command.upload import upload
+from email.policy import default
 from operator import mod
 from django.db import models
 from ckeditor.fields import RichTextField
@@ -18,6 +19,9 @@ class InCityObjectType(models.Model):
 
     def get_absolute_url(self):
         return reverse('show_apartments', kwargs={'obj_type_slug': self.slug})
+
+    def get_rent_url(self):
+        return reverse('show_rent', kwargs={'obj_type_slug': self.slug})
 
     class Meta:
         verbose_name = 'Тип объекта'
@@ -57,6 +61,8 @@ class MetroStation(models.Model):
 class RoomAmount(models.Model):
     room_amount = models.PositiveIntegerField(unique=True, default=1, verbose_name='Кол-во комнат цифрами')
     title = models.CharField(max_length=25, verbose_name='Количество комнат словами')
+    slug = models.SlugField(max_length=150,default='no_slug', db_index=True, verbose_name='URL')
+
 
     def __str__(self):
         return self.title

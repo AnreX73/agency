@@ -11,7 +11,11 @@
         <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">  
     </div>
         
-</div>  
+</div> 
+<div class="quik-links-wrapper">
+    
+</div>
+
 <div class="hot-objects-wrapper">
     <h2 class="hot-title">{{hot_title.note|safe}}</h2>
     <div class="hot-objects-list">
@@ -25,7 +29,7 @@
         <img  style="max-width: 150px;" src="{{no_photo.image.url}}" alt="{{no_photo.description}}">
         {% endif %}
         <div class="hot-info">
-        <p>{{obj.title}} </p>
+        <p class="hot-obj-title">{{obj.title}} </p>
         <p>район {{obj.city_region}} </p>
         <p>{{obj.object_adress}} </p>
         <p>{{obj.rooms}} </p>
@@ -54,7 +58,7 @@
         <img  style="max-width: 150px;" src="{{no_photo.image.url}}" alt="{{no_photo.description}}">
         {% endif %}
         <div class="hot-info">
-        <p>{{obj.title}} </p>
+        <p class="hot-obj-title">{{obj.title}} </p>
         <p>{{obj.object_adress}} </p>
         <p>до города {{obj.city_distance}} </p>
         <p>участок {{obj.land_square}}</p>

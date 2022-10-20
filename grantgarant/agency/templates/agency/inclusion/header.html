@@ -32,17 +32,17 @@
           </ul>
 
         </li>
-        <li><a href="/sitemap">Аренда</a>
+        <li><a href="">Аренда</a>
           <ul>
             {% for incity in in_city_object_type %}
             {% if incity.title == 'Квартиры' or incity.title == 'Комнаты' %}
-            <li data-link ='{{incity.slug}}'><a href="">{{incity.title}}</a></li>
+            <li data-link ='{{incity.slug}}'><a href="{{incity.get_rent_url}}">{{incity.title}}</a></li>
             {% endif %}
             {% endfor %}
           </ul>
         </li>
-        <li><a href="/sitemap">услуги</a></li>
-        <li><a href="/contact">контакты</a></li>
+        <li><a href="/">услуги</a></li>
+        <li><a href="/">контакты</a></li>
         
       </ul>
    </nav>

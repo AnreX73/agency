@@ -39,6 +39,7 @@ class RoomAmountAdmin(admin.ModelAdmin):
     list_display = ('id', 'room_amount', 'title')
     list_display_links = ('id', 'title')
     search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
     save_on_top = True
 
 
@@ -89,8 +90,8 @@ class GalleryAdmin(admin.TabularInline):
 
 class InCityObjectAdmin(admin.ModelAdmin):
     inlines = [GalleryAdmin]
-    list_display = ('id', 'title', 'rooms', 'gethtmlPhoto', 'city_region', 'price', 'object_type', 'is_published')
-    list_display_links = ('id', 'title')
+    list_display = ('sale_or_rent', 'title', 'rooms', 'gethtmlPhoto', 'city_region', 'price', 'object_type', 'is_published')
+    list_display_links = ('sale_or_rent', 'title')
     search_fields = ('title', 'rooms', 'city_region',)
     list_editable = ('is_published',)
     list_filter = ('is_published', 'time_create')

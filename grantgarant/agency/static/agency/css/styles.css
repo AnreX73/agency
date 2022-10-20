@@ -129,6 +129,7 @@ td{
   }
 /*общая оболочка*/
 .all_content_wrapper{
+  padding: 5px;
     margin: 0 auto;
     max-width: var(--content-size);
     /* background:rgb(0, 128, 128, 0.03); */
@@ -374,6 +375,10 @@ nav{
   text-align:left;
   line-height: 1.3rem;
 }
+.hot-obj-title{
+  color: teal;
+  font-weight: bolder;
+}
 .hot-more-link{
   margin-bottom: 6px;
   margin-top: 10px;
@@ -386,10 +391,17 @@ nav{
 }
 
 
-
-
-
 /*список квартир*/
+.list-main-title{
+  color: teal;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+.list-main-title span{
+  font-size: 2rem;
+  
+
+}
 .apartments-links-wrapper{
   display:flex;
   align-items: center;
