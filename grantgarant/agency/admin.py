@@ -312,4 +312,4 @@ admin.site.register(OutCityObject, OutCityObjectAdmin)
 # admin.site.register(ObjectConstruction, ObjectConstructionAdmin)
 
 
-admin.site.site_header = 'GRANT GARANT'
+admin.site.site_header = 'ЕЦН'
