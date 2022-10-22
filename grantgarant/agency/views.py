@@ -6,17 +6,19 @@ from agency.models import *
 
 
 def index(request):
+    obj = RoomAmount
     context = {
         'title': 'Агенство ЕЦН',
         'main_page_img': Graphics.objects.get(description='изображение на главную'),
         'main_page_slogan': Graphics.objects.get(description='Слоган'),
-        'hot_city_obj': InCityObject.objects.filter(is_hot=True).filter(sale_or_rent='s').order_by('-time_create')[:4],
-        'hot_out_city_obj': OutCityObject.objects.filter(is_hot=True).order_by('-time_create')[:3],
+        'hot_city_obj': InCityObject.objects.filter(is_hot=True).filter(sale_or_rent='s').order_by('-time_create')[:5],
+        'hot_out_city_obj': OutCityObject.objects.filter(is_hot=True).order_by('-time_create')[:4],
         'hot_city_obj_type': InCityObjectType.objects.all(),
         'hot_out_city_obj_type': OutCityObjectType.objects.all(),
         'hot_title': Graphics.objects.get(description='горячая кнопка на главной'),
         'no_photo': Graphics.objects.get(description='нет фото'),
-        'services': Post.objects.all()
+        'services': Post.objects.all(),
+        'check':obj.objects.get(room_amount=2).rooms.all()[:4]
 
     }
     return render(request, 'agency/index.html', context=context)

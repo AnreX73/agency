@@ -12,21 +12,13 @@
     </div>
         
 </div>
- <h2 class="services-title" >Услуги агенства</h2>
-<div class="services-wrapper">
-    {% for service in services %}
-    <div class="service-item">
-     <div class="service-item-title">
-        {{service.title}}
-     </div>
-     <div class="service-item-content">
-        {{service.content|safe}}
-     </div>
-    </div>
-
-    {% endfor %}
+<div class="quick-links">
+   {% for c in check %}
+   {{c.title}}
+   {% endfor %}
 </div>
 
+<hr>
 <div class="hot-objects-wrapper">
     <h2 class="hot-title">{{hot_title.note|safe}}</h2>
     <div class="hot-objects-list">
@@ -89,7 +81,21 @@
 
 </div>
 
+ <hr>
+ <h2 class="services-title" id="services" >Услуги агенства</h2>
+<div class="services-wrapper">
+    {% for service in services %}
+    <div class="service-item">
+     <div class="service-item-title">
+        {{service.title}}
+     </div>
+     <div class="service-item-content">
+        {{service.content|safe}}
+     </div>
+    </div>
 
+    {% endfor %}
+</div>
 
 </div>
  

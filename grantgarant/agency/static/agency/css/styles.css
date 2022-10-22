@@ -107,6 +107,7 @@ height:auto;
 max-width:100%;
 /* padding: 10px; */
 }
+
 h2{
   font-size: 1.5rem;
 }
@@ -352,12 +353,12 @@ padding: 10px;
 }
 .service-item-content{
   text-align: justify;
-  font-size: 0.9rem;
+  
 
 }
 /*hot объекты на главной*/
 .hot-objects-wrapper{
-  margin-top:1rem;
+  margin-top:0.5rem;
 }
 .hot-objects-list{
   display: grid;
@@ -414,6 +415,12 @@ padding: 10px;
 .hot-more-link:hover{
   color: var(--wild-text);
   transition: 300ms ease-in-out all;
+}
+
+hr{
+  width: 40%;
+  border-bottom: 1px dotted teal;
+  margin: 15px auto;
 }
 
 

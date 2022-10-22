@@ -35,3 +35,6 @@ def show_apa(obj_list_type='city', obj_type='vtorichnoe-zhile', s_or_r='s'):
         'incity_id': incity_id,
         'no_photo': Graphics.objects.get(description='нет фото')
     }
+
+# @register.inclusion_tag('agency/inclusion/quick_links.html')
+# def quick_show

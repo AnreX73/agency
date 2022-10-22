@@ -158,7 +158,7 @@ class InCityObject(models.Model):
     city_region = models.ForeignKey(InCityRegion, on_delete=models.PROTECT, verbose_name='район города')
     metro = models.ForeignKey(MetroStation, on_delete=models.PROTECT, verbose_name='станция метро')
     metro_distance = models.CharField(max_length=255, blank=True, verbose_name='расстояние до метро')
-    rooms = models.ForeignKey(RoomAmount, on_delete=models.PROTECT, verbose_name='количество комнат')
+    rooms = models.ForeignKey(RoomAmount, on_delete=models.PROTECT, verbose_name='количество комнат',related_name='rooms')
     square = models.PositiveIntegerField(blank=True, verbose_name='общая площадь кв.м')
     live_square = models.PositiveIntegerField(blank=True, verbose_name='жилая площадь')
     kitchen = models.PositiveIntegerField(blank=True, verbose_name='площадь кухни')
