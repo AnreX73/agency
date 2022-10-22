@@ -6,21 +6,20 @@ from agency.models import *
 
 
 def index(request):
-    
     context = {
-        'title': 'Агенство Грант Гарант',
+        'title': 'Агенство ЕЦН',
         'main_page_img': Graphics.objects.get(description='изображение на главную'),
         'main_page_slogan': Graphics.objects.get(description='Слоган'),
-        'hot_city_obj': InCityObject.objects.filter(is_hot=True).filter(sale_or_rent='s').order_by('-time_create')[:4],    
-        'hot_out_city_obj': OutCityObject.objects.filter(is_hot=True).order_by('-time_create')[:3],    
-        'hot_city_obj_type': InCityObjectType.objects.all(),    
-        'hot_out_city_obj_type': OutCityObjectType.objects.all(), 
+        'hot_city_obj': InCityObject.objects.filter(is_hot=True).filter(sale_or_rent='s').order_by('-time_create')[:4],
+        'hot_out_city_obj': OutCityObject.objects.filter(is_hot=True).order_by('-time_create')[:3],
+        'hot_city_obj_type': InCityObjectType.objects.all(),
+        'hot_out_city_obj_type': OutCityObjectType.objects.all(),
         'hot_title': Graphics.objects.get(description='горячая кнопка на главной'),
-        'no_photo': Graphics.objects.get(description='нет фото')
-            
+        'no_photo': Graphics.objects.get(description='нет фото'),
+        'services': Post.objects.all()
+
     }
     return render(request, 'agency/index.html', context=context)
-
 
 
 def show_apartments(request, obj_type_slug):
@@ -77,8 +76,6 @@ def show_dacha(request, dacha_slug):
 
     }
     return render(request, 'agency/dacha.html', context=context)
-
-
 
 
 def searched_obj(request):

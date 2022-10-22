@@ -328,7 +328,33 @@ nav{
 .main-page-img-wrapper img{ 
   width:100%;
 }
+/*услуги на главной*/
+.services-title{
+  color: teal;
+  margin-top: 10px;font-weight: bolder;
+}
+.services-wrapper{
+display:grid;
+grid-template-columns: repeat(4,1fr);
+line-height: 1.3rem;
+gap: 10px;
+padding: 10px;
+}
+.service-item{
+  border: 1px solid rgb(212, 211, 211);
+  padding: 10px;
+  border-radius: 4px;
+}
+.service-item-title{
+  font-size: 1.1rem;
+  color: teal;
+  margin-bottom: 5px;
+}
+.service-item-content{
+  text-align: justify;
+  font-size: 0.9rem;
 
+}
 /*hot объекты на главной*/
 .hot-objects-wrapper{
   margin-top:1rem;

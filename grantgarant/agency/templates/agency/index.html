@@ -11,9 +11,20 @@
         <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">  
     </div>
         
-</div> 
-<div class="quik-links-wrapper">
-    
+</div>
+ <h2 class="services-title" >Услуги агенства</h2>
+<div class="services-wrapper">
+    {% for service in services %}
+    <div class="service-item">
+     <div class="service-item-title">
+        {{service.title}}
+     </div>
+     <div class="service-item-content">
+        {{service.content|safe}}
+     </div>
+    </div>
+
+    {% endfor %}
 </div>
 
 <div class="hot-objects-wrapper">
