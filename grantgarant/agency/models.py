@@ -152,10 +152,10 @@ class InCityObject(models.Model):
     is_hot = models.BooleanField(default=False, verbose_name='горячий вариант', help_text='если хотите видеть на '
                                                                                           'главной странице')
     object_type = models.ForeignKey(InCityObjectType, on_delete=models.PROTECT, verbose_name='тип объекта',
-                                    help_text='выберете тип объекта')
+                                    help_text='выберете тип объекта',related_name='obj_type')
     object_adress = models.CharField(max_length=255, blank=True, verbose_name='адрес объекта',
                                      help_text='необязательно')
-    city_region = models.ForeignKey(InCityRegion, on_delete=models.PROTECT, verbose_name='район города')
+    city_region = models.ForeignKey(InCityRegion, on_delete=models.PROTECT, verbose_name='район города',related_name='region')
     metro = models.ForeignKey(MetroStation, on_delete=models.PROTECT, verbose_name='станция метро')
     metro_distance = models.CharField(max_length=255, blank=True, verbose_name='расстояние до метро')
     rooms = models.ForeignKey(RoomAmount, on_delete=models.PROTECT, verbose_name='количество комнат',related_name='rooms')
@@ -396,7 +396,7 @@ class OutCityObject(models.Model):
     price = models.CharField(max_length=255, verbose_name='Цена')
     image = models.ImageField(upload_to="images", blank=True, verbose_name='Основное изображение')
     is_hot = models.BooleanField(default=False, verbose_name='горячий вариант')
-    object_type = models.ForeignKey(OutCityObjectType, on_delete=models.PROTECT, verbose_name='тип объекта')
+    object_type = models.ForeignKey(OutCityObjectType, on_delete=models.PROTECT, verbose_name='тип объекта',related_name='obj_type')
     object_adress = models.CharField(max_length=255, blank=True, verbose_name='адрес объекта')
     city_distance = models.CharField(max_length=255, blank=True, verbose_name='расстояние до города')
     land_square = models.DecimalField(blank=True, max_digits=4, decimal_places=2, verbose_name='площадь участка',
