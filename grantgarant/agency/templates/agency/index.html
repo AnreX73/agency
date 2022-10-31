@@ -35,11 +35,8 @@
         </div>
         </div>
     </a>
-        {% for type in hot_city_obj_type %}
-            {% if type.title|stringformat:"s" == obj.object_type|stringformat:"s" %}
-                <a class="hot-more-link" href="{{type.get_absolute_url}}"> <p class="hot-more-link">все {{type.title}} ( {{type.obj_type.count}} ) ></p></a>
-            {% endif %}
-        {% endfor %}
+         <a class="hot-more-link" href="{{obj.object_type.get_absolute_url}}"><p class="hot-more-link">Все {{ obj.object_type.title }} --></p></a>
+
     </div>
     {% endfor %}
 
@@ -63,11 +60,9 @@
         </div>
         </div>
     </a>
-        {% for type in hot_out_city_obj_type %}
-            {% if type.title|stringformat:"s" == obj.object_type|stringformat:"s" %}
-                <a class="hot-more-link" href="{{type.get_absolute_url}}"> <p class="hot-more-link">все {{type.title}} ( {{type.obj_type.count}} ) ></p></a>
-            {% endif %}
-        {% endfor %}
+        <a class="hot-more-link" href="{{obj.object_type.get_absolute_url}}"><p class="hot-more-link">Все {{ obj.object_type.title }} --></p></a>
+        {{obj.object_type.count}}
+
     </div>
     {% endfor %}
     

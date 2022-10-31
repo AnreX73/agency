@@ -13,8 +13,6 @@ def index(request):
         'main_page_slogan': Graphics.objects.get(description='Слоган'),
         'hot_city_obj': InCityObject.objects.filter(is_hot=True).filter(sale_or_rent='s').order_by('-time_create'),
         'hot_out_city_obj': OutCityObject.objects.filter(is_hot=True).order_by('-time_create'),
-        'hot_city_obj_type': InCityObjectType.objects.all(),
-        'hot_out_city_obj_type': OutCityObjectType.objects.all(),
         'hot_title': Graphics.objects.get(description='горячая кнопка на главной'),
         'no_photo': Graphics.objects.get(description='нет фото'),
         'services': Post.objects.all(),
