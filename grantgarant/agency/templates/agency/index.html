@@ -8,13 +8,32 @@
 <div class="slogan-img-wrapper"> 
     <div class="main-page-slogan">{{main_page_slogan.note|safe}}</div>
     <div class="main-page-img-wrapper">
-        <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}">  
-    </div>
+        <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}"> 
+        <a href="#hot"><button class="custom-btn btn-5"><span>{{hot_title.note|safe}}</span></button> </a> 
         
+    </div>
+       
+</div>
+
+
+<hr >
+<h2  style="padding-top: 100px; margin-top: -100px;" class="services-title" id="services">Услуги агенства</h2>
+<div class="services-wrapper">
+   {% for service in services %}
+   <div class="service-item">
+    <div class="service-item-title">
+       {{service.title}}
+    </div>
+    <div class="service-item-content">
+       {{service.content|safe}}
+    </div>
+   </div>
+
+   {% endfor %}
 </div>
 <hr>
-<div class="hot-objects-wrapper">
-    <h2 class="hot-title">{{hot_title.note|safe}}</h2>
+<div class="hot-objects-wrapper" >
+    <h2  style="padding-top: 100px; margin-top: -100px;" class="hot-title" id="hot">{{hot_title.note|safe}}</h2>
     <div class="hot-objects-list">
     {% for obj in hot_city_obj %}
     <div class="hot-object-wrapper">
@@ -70,21 +89,7 @@
 
 </div>
 
- <hr>
- <h2 class="services-title" id="services" >Услуги агенства</h2>
-<div class="services-wrapper">
-    {% for service in services %}
-    <div class="service-item">
-     <div class="service-item-title">
-        {{service.title}}
-     </div>
-     <div class="service-item-content">
-        {{service.content|safe}}
-     </div>
-    </div>
 
-    {% endfor %}
-</div>
 
 </div>
  

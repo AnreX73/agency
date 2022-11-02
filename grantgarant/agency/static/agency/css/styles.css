@@ -33,6 +33,7 @@ aside {
 
 html,
 body {
+  scroll-behavior: smooth;
   height: 100%;
   width: 100%;
   font-size: 100%;
@@ -325,14 +326,22 @@ nav{
 /*стили для картинки на главной*/
 .main-page-img-wrapper{ 
   width:100%; 
+  position: relative;
+}
+.custom-btn{
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 }
 .main-page-img-wrapper img{ 
   width:100%;
 }
 /*услуги на главной*/
+
 .services-title{
   color: teal;
-  margin-top: 10px;font-weight: bolder;
+  margin-top: 10px;
+  font-weight: bolder;
 }
 .services-wrapper{
 display:grid;
@@ -729,3 +738,66 @@ border-radius: 4px;
   text-align: center;
 }
 
+.custom-btn {
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  border-radius: 50%;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 10px;
+  bottom: -20px;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.custom-btn:hover {
+  border-radius: 4px;
+}
+.btn-5 {
+  width: 120px;
+  height: 120px;
+  line-height: 1.3rem;
+  padding: 0;
+  border: none;
+  background: var(--wild-text);
+  background: linear-gradient(0deg, var(--wild-text) 0%, var(--wild-text) 100%);
+}
+.btn-5:hover {
+  color: var(--wild-text);
+  background: white;
+  box-shadow:none;
+}
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: var(--wild-text);
+  box-shadow:
+   -1px -1px 5px 0px #fff,
+   7px 7px 20px 0px #0003,
+   4px 4px 5px 0px #0002;
+  transition:400ms ease all;
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
