@@ -75,6 +75,18 @@ def show_dacha(request, dacha_slug):
     }
     return render(request, 'agency/dacha.html', context=context)
 
+def room_amount(request,rooms_slug):
+    room_amont_type = get_object_or_404(RoomAmount, slug=rooms_slug)
+    rooms_objects = room_amont_type.rooms.all()
+    unselected_links = RoomAmount.objects.exclude(slug=rooms_slug)
+    context = {
+        'room_amont_type': room_amont_type,
+        'rooms_objects': rooms_objects,
+        'unselected_links': unselected_links,
+
+    }
+    return render(request, 'agency/room_amount.html', context=context)
+
 
 def searched_obj(request):
     if request.method == 'POST':
