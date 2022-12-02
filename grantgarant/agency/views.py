@@ -6,7 +6,6 @@ from agency.models import *
 
 
 def index(request):
-    
     context = {
         'title': 'Агенство ЕЦН',
         'main_page_img': Graphics.objects.get(description='изображение на главную'),
@@ -75,7 +74,8 @@ def show_dacha(request, dacha_slug):
     }
     return render(request, 'agency/dacha.html', context=context)
 
-def room_amount(request,rooms_slug):
+
+def room_amount(request, rooms_slug):
     room_amont_type = get_object_or_404(RoomAmount, slug=rooms_slug)
     rooms_objects = room_amont_type.rooms.all()
     unselected_links = RoomAmount.objects.exclude(slug=rooms_slug)
@@ -93,13 +93,15 @@ def searched_obj(request):
         form = InCitySearchForm(request.POST)
         if form.is_valid():
             try:
-                obj_list = InCityObject.objects.filter(**form.cleaned_data)
+                dic = {k: v for k, v in form.cleaned_data.items() if v is not None}
+                obj_list = InCityObject.objects.filter(**dic).filter(is_published=True)
+                print(dic)
 
             except:
                 form.add_error(None, 'ERROR')
 
     else:
-        obj_list = InCityObject.objects.all()
+        obj_list = InCityObject.objects.filter(sale_or_rent='s')
         form = InCitySearchForm()
     context = {
         'title': 'Агенство Грант Гарант - поиск',

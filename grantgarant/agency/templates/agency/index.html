@@ -10,7 +10,8 @@
     <div class="main-page-img-wrapper">
         <img src="{{main_page_img.image.url}}" alt="{{main_page_img.title}}"> 
         <a href="#hot"><button class="custom-btn btn-5"><span>{{hot_title.note|safe}}</span></button> </a> 
-        
+        <a href="{% url 'searched_obj' %}"><button class="custom-btn btn-5 search_btn"><span>Поиск объекта</span></button> </a>
+
     </div>
        
 </div>

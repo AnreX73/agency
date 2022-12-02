@@ -758,6 +758,10 @@ border-radius: 4px;
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
 }
+.search_btn{
+left: 180px;
+font-weight:bold;
+}
 .custom-btn:hover {
   border-radius: 4px;
 }
