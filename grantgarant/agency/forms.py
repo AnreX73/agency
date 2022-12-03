@@ -6,8 +6,8 @@ class InCitySearchForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['city_region'].empty_label = 'все районы'
-        self.fields['object_type'].empty_label = 'любой'
-        self.fields['rooms'].empty_label = 'любое'
+        self.fields['object_type'].empty_label = 'все предложения'
+        self.fields['rooms'].empty_label = 'все предложения'
         self.fields['rooms'].required = False
         self.fields['city_region'].required = False
         self.fields['object_type'].required = False

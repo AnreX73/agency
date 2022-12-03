@@ -5,15 +5,17 @@
 
 <div class="all-searched-wrapper">
  <div class="forms-wrapper"> 
-<form action=" "class="search-form" method="POST" name="searched">
+<form action=" "class="search-form" method="POST" name="searched" >
     {% csrf_token %}
     <h2>Поиск объекта в городе</h2>
-    {% for f in form %}
+    <div class="form-fields-wrapper">
+    {% for f in form  %}
     <ul>
-        <li> <label for = "{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</li>
+        <li> <label for = "{{ f.id_for_label }}">{{ f.label }}</label>{{ f }} </li>
         <li class="form-error">{{ f.errors }}</li>
     </ul>
     {% endfor %}
+    </div> 
     <button class="submit" type="submit">Найти</button>
 </form>
 

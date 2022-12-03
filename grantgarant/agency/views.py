@@ -93,9 +93,9 @@ def searched_obj(request):
         form = InCitySearchForm(request.POST)
         if form.is_valid():
             try:
-                dic = {k: v for k, v in form.cleaned_data.items() if v is not None}
-                obj_list = InCityObject.objects.filter(**dic).filter(is_published=True)
-                print(dic)
+                obj_dic = {k: v for k, v in form.cleaned_data.items() if v is not None}
+                obj_list = InCityObject.objects.filter(**obj_dic).filter(is_published=True)
+                
 
             except:
                 form.add_error(None, 'ERROR')
