@@ -10,7 +10,7 @@
     <h2>Поиск объекта в городе</h2>
     <div class="form-fields-wrapper">
     {% for f in form  %}
-    <ul>
+    <ul >
         <li> <label for = "{{ f.id_for_label }}">{{ f.label }}</label>{{ f }} </li>
         <li class="form-error">{{ f.errors }}</li>
     </ul>
@@ -22,7 +22,7 @@
 </div> 
 
 
-<div class="searched-wrapper">
+<!-- <div class="searched-wrapper">
 {% for o in obj_list %}
 <a href="{{o.get_absolute_url}}">
     <div class="searched-obj-wrapper">
@@ -41,6 +41,9 @@
 {% empty %}
 <div class="non-searched"><h2>Нет объектов</h2></div>
 {% endfor%}
+</div> -->
+<div  class="apartments-container">  
+    {% show_apa obj_type=obj_type_slug s_or_r=sale_or_rent %}
 </div>
 </div>
 {% endblock content %}

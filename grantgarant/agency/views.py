@@ -94,20 +94,30 @@ def searched_obj(request):
         if form.is_valid():
             try:
                 obj_dic = {k: v for k, v in form.cleaned_data.items() if v is not None}
-                obj_list = InCityObject.objects.filter(**obj_dic).filter(is_published=True)
+                selected_items = InCityObject.objects.filter(**obj_dic).filter(is_published=True)
+                obj_type= form.cleaned_data['object_type']
+                obj_type_slug= form.cleaned_data['object_type'].slug
+                s_or_r=form.cleaned_data['sale_or_rent']
+                print(selected_items, s_or_r, obj_type, obj_type_slug)
                 
 
             except:
                 form.add_error(None, 'ERROR')
 
     else:
-        obj_list = InCityObject.objects.filter(sale_or_rent='s')
+        selected_items = InCityObject.objects.filter(sale_or_rent='s')
+        obj_type='Квартиры'
+        obj_type_slug='vtorichnoe-zhile'
+        s_or_r='s'
         form = InCitySearchForm()
     context = {
-        'title': 'Агенство Грант Гарант - поиск',
+        'title': 'Агенство ЕЦН - поиск',
         'form': form,
-        'obj_list': obj_list,
-        'no_photo': Graphics.objects.get(description='нет фото')
+        'selected_items': selected_items,
+        'no_photo': Graphics.objects.get(description='нет фото'),
+        'obj_type':obj_type,
+        'sale_or_rent':s_or_r,
+        'obj_type_slug':obj_type_slug
 
     }
     return render(request, 'agency/searched_obj.html', context=context)
