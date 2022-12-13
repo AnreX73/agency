@@ -37,6 +37,9 @@ class InCityRegion(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('show_region', kwargs={'region_slug': self.slug})
+
     class Meta:
         verbose_name = 'Район города'
         verbose_name_plural = 'Район города'
@@ -50,6 +53,9 @@ class MetroStation(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('metro', kwargs={'metro_slug': self.slug})
 
     class Meta:
         verbose_name = 'Станцию метро'

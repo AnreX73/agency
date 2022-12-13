@@ -2,7 +2,7 @@
 {% load agency_tags %}
 
 {% block content %}
-<h2 class="list-main-title">Продажа <span>{{apartments_type.title}}</span></h2>
+<h2 class="list-main-title">Продажа <span>все {{apartments_type.title}}</span></h2>
 <div class="apartments-links-wrapper">
     <div class="logo-and-title" >
         <img src="{{apartments_type.icon.url}}" alt="{{apartments_type.title}}">
@@ -16,7 +16,10 @@
 
 </div></a>
 {% endfor%}
-
+<a href="{% url 'searched_obj' %}"> <div class="logo-and-title search-link " >
+    <img src="{{search_icon.image.url}}" alt="{{search_icon.description}}">
+    <span class="apartment-logo-title">{{search_icon.note|safe}}</span>
+</div></a>
 
 </div>
 <div  class="apartments-container">  

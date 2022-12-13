@@ -475,6 +475,13 @@ hr{
   opacity: 0.5;
   box-shadow:none;
 }
+.search-link{
+  box-shadow:none;
+}
+.search-link:hover{
+  border-bottom: 1px dotted teal;
+  transition: 300ms ease-in-out all;
+}
 .unselected  h2{
   font-size: 1rem;
 }
@@ -710,7 +717,7 @@ border-radius: 4px;
   max-width: 360px;
   display:grid;
   grid-template-columns: repeat(3,1fr);
-  gap: 10px;
+  gap: 15px;
   max-width: 100%;
   align-items:center;
 }
@@ -720,12 +727,16 @@ border-radius: 4px;
   justify-items:flex-end;
   padding: 10px;
   position: relative;
+  border:1px solid rgb(0, 0, 0, 0.2);
+}
+.searched-obj-wrapper:hover{
   box-shadow:var(--complex-shadow);
- 
+  background: var(--light-teal);
+  transition: 300ms ease-in-out all;
 }
 .searched-obj-price{
   position: absolute;
-  background:var(--wild-text);
+  background:teal;
   color:white;
   padding:10px;
   position:absolute;
@@ -771,10 +782,7 @@ border-radius: 4px;
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
 }
-.search_btn{
-left: 180px;
-font-weight:bold;
-}
+
 .custom-btn:hover {
   border-radius: 4px;
 }
@@ -817,4 +825,17 @@ font-weight:bold;
 .btn-5:hover:after{
   width:100%;
   transition:800ms ease all;
+}
+.search_btn{
+  left: 150px;
+  font-weight:bold;
+  background: teal;
+  }
+  .search_btn:hover
+  {
+  color: teal;
+  }
+.search_btn:before,
+.search_btn:after{
+background: teal;
 }

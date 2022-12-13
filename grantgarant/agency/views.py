@@ -22,9 +22,11 @@ def index(request):
 def show_apartments(request, obj_type_slug):
     apartments_type = get_object_or_404(InCityObjectType, slug=obj_type_slug)
     unselected_links = InCityObjectType.objects.exclude(slug=obj_type_slug)
+   
     context = {
         'apartments_type': apartments_type,
         'unselected_links': unselected_links,
+        'search_icon' : Graphics.objects.get(description='иконка поиска'),
 
     }
     return render(request, 'agency/show_apartments.html', context=context)
@@ -70,22 +72,8 @@ def show_dacha(request, dacha_slug):
         'dacha': dacha,
         'gallery': Gallery2.objects.filter(galleryLink2_id=dacha_id),
         'no_photo': Graphics.objects.get(description='нет фото')
-
     }
     return render(request, 'agency/dacha.html', context=context)
-
-
-def room_amount(request, rooms_slug):
-    room_amont_type = get_object_or_404(RoomAmount, slug=rooms_slug)
-    rooms_objects = room_amont_type.rooms.all()
-    unselected_links = RoomAmount.objects.exclude(slug=rooms_slug)
-    context = {
-        'room_amont_type': room_amont_type,
-        'rooms_objects': rooms_objects,
-        'unselected_links': unselected_links,
-
-    }
-    return render(request, 'agency/room_amount.html', context=context)
 
 
 def searched_obj(request):
@@ -95,29 +83,22 @@ def searched_obj(request):
             try:
                 obj_dic = {k: v for k, v in form.cleaned_data.items() if v is not None}
                 selected_items = InCityObject.objects.filter(**obj_dic).filter(is_published=True)
-                obj_type= form.cleaned_data['object_type']
-                obj_type_slug= form.cleaned_data['object_type'].slug
-                s_or_r=form.cleaned_data['sale_or_rent']
-                print(selected_items, s_or_r, obj_type, obj_type_slug)
-                
+              
+                print(selected_items)
+
 
             except:
                 form.add_error(None, 'ERROR')
 
     else:
-        selected_items = InCityObject.objects.filter(sale_or_rent='s')
-        obj_type='Квартиры'
-        obj_type_slug='vtorichnoe-zhile'
-        s_or_r='s'
+        selected_items = InCityObject.objects.filter(sale_or_rent='s')  
         form = InCitySearchForm()
     context = {
         'title': 'Агенство ЕЦН - поиск',
         'form': form,
         'selected_items': selected_items,
         'no_photo': Graphics.objects.get(description='нет фото'),
-        'obj_type':obj_type,
-        'sale_or_rent':s_or_r,
-        'obj_type_slug':obj_type_slug
+       
 
     }
     return render(request, 'agency/searched_obj.html', context=context)
