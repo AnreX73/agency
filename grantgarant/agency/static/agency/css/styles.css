@@ -657,12 +657,15 @@ border-radius: 4px;
   align-items: center; 
 }
 .form-fields-wrapper{
+  margin-top: 20px;
   display: grid;
   grid-template-columns:repeat(4,1fr);
   gap:10px 20px;
   justify-items:center;
 
 }
+
+
 /*стили формы поска*/
 .search-form {
   box-shadow: var(--complex-shadow);
@@ -670,6 +673,7 @@ border-radius: 4px;
   border-radius: 4px;
   margin-bottom: 20px;
   background-color: #fff;
+  text-align: center;
 }
 
 
@@ -682,33 +686,42 @@ border-radius: 4px;
   color: teal;
   justify-items:center;
 }
+.search-form li:hover {
+  color: var(--wild-text);
+  transition: 300ms ease-in-out all;
+}
 
 .search-form select{
   padding: 5px;
   margin: 5px;
   border-radius: 4px;
   border: 1px solid rgb(204, 238, 238); 
-  /* background: var(--light-teal); */
   width: 150px;
   font-size: 1.1rem;
   font-family: 'Oswald', sans-serif;
-  /* box-shadow:var(--complex-shadow); */
-
+}
+.search-form select:hover{
+  background:var(--light-teal);
+  box-shadow: var(--complex-shadow);
+  transition: 300ms ease-in-out all;
 }
 
+
 .search-form button{
-  padding: 2px 5px;
-  font-size: 1.1rem;
-  min-width: 100px;
+  padding: 4px 7px;
+  font-size: 1.2rem;
+  min-width: 180px;
   border-radius: 4px;
   color: teal;
-  background: #fff;
+  background:var(--light-teal);
   border: 1px solid rgb(204, 238, 238);
   margin-top: 10px;
 }
 
 .search-form button:hover{
   box-shadow: var(--complex-shadow);
+  transition: 300ms ease-in-out all;
+  color: black;
 }
 
 /*стили выдачи поска*/
@@ -728,6 +741,7 @@ border-radius: 4px;
   padding: 10px;
   position: relative;
   border:1px solid rgb(0, 0, 0, 0.2);
+  min-width: 250px;
 }
 .searched-obj-wrapper:hover{
   box-shadow:var(--complex-shadow);
