@@ -853,3 +853,22 @@ border-radius: 4px;
 .search_btn:after{
 background: teal;
 }
+
+
+.form-input{
+border: 1px solid teal;
+padding:5px;
+border-radius:4px;
+}
+
+.reg-fields-wrapper{
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap:20px;
+  align-items:center;
+}
+
+.form-error{
+color:red;
+}

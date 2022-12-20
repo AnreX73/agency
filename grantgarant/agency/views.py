@@ -1,7 +1,9 @@
-from multiprocessing.sharedctypes import Value
-from django.shortcuts import render, get_object_or_404
 
-from agency.forms import InCitySearchForm
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+
+from agency.forms import InCitySearchForm, RegisterUserForm
 from agency.models import *
 
 
@@ -22,11 +24,11 @@ def index(request):
 def show_apartments(request, obj_type_slug):
     apartments_type = get_object_or_404(InCityObjectType, slug=obj_type_slug)
     unselected_links = InCityObjectType.objects.exclude(slug=obj_type_slug)
-   
+
     context = {
         'apartments_type': apartments_type,
         'unselected_links': unselected_links,
-        'search_icon' : Graphics.objects.get(description='иконка поиска'),
+        'search_icon': Graphics.objects.get(description='иконка поиска'),
 
     }
     return render(request, 'agency/show_apartments.html', context=context)
@@ -83,7 +85,7 @@ def searched_obj(request):
             try:
                 obj_dic = {k: v for k, v in form.cleaned_data.items() if v is not None}
                 selected_items = InCityObject.objects.filter(**obj_dic).filter(is_published=True)
-              
+
                 print(selected_items)
 
 
@@ -91,14 +93,23 @@ def searched_obj(request):
                 form.add_error(None, 'ERROR')
 
     else:
-        selected_items = InCityObject.objects.filter(sale_or_rent='s')  
+        selected_items = InCityObject.objects.filter(sale_or_rent='s')
         form = InCitySearchForm()
     context = {
         'title': 'Агенство ЕЦН - поиск',
         'form': form,
         'selected_items': selected_items,
         'no_photo': Graphics.objects.get(description='нет фото'),
-       
 
     }
     return render(request, 'agency/searched_obj.html', context=context)
+
+
+def login(request):
+    pass
+
+
+class RegisterUser(CreateView):
+    form_class = RegisterUserForm
+    template_name = 'agency/register.html'
+    success_url = reverse_lazy('login')
